@@ -19,3 +19,8 @@ evaluation
 *.sqlite-*
 *.sqlite3
 *.sqlite3-*
+
+.superpowers
+docs/internal
+*.log
+.opsforge
