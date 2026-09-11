@@ -1,0 +1,1 @@
+"""Public inspectable development fixtures."""
