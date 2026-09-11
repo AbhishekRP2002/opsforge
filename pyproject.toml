@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: BSD-3-Clause
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-itops_env"
+version = "0.1.0"
+description = "OpsForge IT operations environment for OpenEnv"
+requires-python = ">=3.11"
+dependencies = [
+    "openenv==0.4.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.14.0",
+]
+
+[project.scripts]
+# Server entry point - enables running via: uv run --project . server
+# or: python -m itops_env.server.app
+server = "itops_env.server.app:main"
+
+[tool.setuptools]
+include-package-data = true
+packages = ["itops_env", "itops_env.server"]
+package-dir = { "itops_env" = ".", "itops_env.server" = "server" }
