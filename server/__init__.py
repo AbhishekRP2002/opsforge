@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
-"""Itops Env environment server components."""
+"""OpsForge environment; protected app factory is in server.app."""
 
 from .itops_environment import ItopsEnvironment
 

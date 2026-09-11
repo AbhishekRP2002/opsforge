@@ -1,92 +1,109 @@
-# SPDX-License-Identifier: BSD-3-Clause
+"""Persistent OpenEnv client for the shared provider episode."""
 
-"""Itops Env Environment Client."""
+import asyncio
+import json
+import os
+from typing import Any
 
 from openenv.core import EnvClient
 from openenv.core.client_types import StepResult
-from openenv.core.env_server.types import State
+from openenv.core.env_client import _is_localhost_ws_url
+from websockets.asyncio.client import connect as ws_connect
+from websockets.exceptions import ConnectionClosed
 
-from .models import ItopsAction, ItopsObservation
+from .models import ItopsAction, ItopsObservation, ItopsState
 
 
-class ItopsEnv(EnvClient[ItopsAction, ItopsObservation, State]):
-    """
-    Client for the Itops Env Environment.
-
-    This client maintains a persistent WebSocket connection to the environment server,
-    enabling efficient multi-step interactions with lower latency.
-    Each client instance has its own dedicated environment session on the server.
-
-    Example:
-        >>> # Connect to a running server
-        >>> with ItopsEnv(base_url="http://localhost:8000").sync() as client:
-        ...     result = client.reset()
-        ...     print(result.observation.echoed_message)
-        ...
-        ...     result = client.step(ItopsAction(message="Hello!"))
-        ...     print(result.observation.echoed_message)
-
-    Example with Docker:
-        >>> # Automatically start container and connect (.sync() for sync use)
-        >>> client = ItopsEnv.from_docker_image("opsforge:scaffold").sync()
-        >>> try:
-        ...     result = client.reset()
-        ...     result = client.step(ItopsAction(message="Test"))
-        ... finally:
-        ...     client.close()
-    """
-
-    def _step_payload(self, action: ItopsAction) -> dict:
-        """
-        Convert ItopsAction to JSON payload for step message.
-
-        Args:
-            action: ItopsAction instance
-
-        Returns:
-            Dictionary representation suitable for JSON encoding
-        """
-        return {
-            "message": action.message,
-        }
-
-    def _parse_result(self, payload: dict) -> StepResult[ItopsObservation]:
-        """
-        Parse server response into StepResult[ItopsObservation].
-
-        Args:
-            payload: JSON response data from server
-
-        Returns:
-            StepResult with ItopsObservation
-        """
-        obs_data = payload.get("observation", {})
-        observation = ItopsObservation(
-            echoed_message=obs_data.get("echoed_message", ""),
-            message_length=obs_data.get("message_length", 0),
-            done=payload.get("done", False),
-            reward=payload.get("reward"),
-            metadata=payload.get("metadata", obs_data.get("metadata", {})),
+class ItopsEnv(EnvClient[ItopsAction, ItopsObservation, ItopsState]):
+    def __init__(self, *args, controller_token: str | None = None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._controller_token = (
+            controller_token
+            if controller_token is not None
+            else os.getenv("OPSFORGE_CONTROLLER_TOKEN")
         )
 
+    def _create_session_client(self):
+        client = super()._create_session_client()
+        client._controller_token = self._controller_token
+        return client
+
+    async def _connect_async(self):
+        # OpenEnv 0.4.2 has no header hook; retain its connection lifecycle.
+        if self._ws is not None:
+            if self._ws_loop is asyncio.get_running_loop():
+                return self
+            self._ws = None
+            self._ws_loop = None
+        try:
+            self._start_provider_if_needed()
+        except Exception:
+            await self.close()
+            raise
+        assert self._ws_url is not None
+        options: dict[str, Any] = {}
+        if _is_localhost_ws_url(self._ws_url):
+            options["proxy"] = None
+        if self._controller_token:
+            options["additional_headers"] = {
+                "Authorization": f"Bearer {self._controller_token}"
+            }
+        try:
+            self._ws = await ws_connect(
+                self._ws_url,
+                open_timeout=self._connect_timeout,
+                max_size=self._max_message_size,
+                ping_interval=self._websocket_ping_interval_s,
+                ping_timeout=self._websocket_ping_timeout_s,
+                **options,
+            )
+            self._ws_loop = asyncio.get_running_loop()
+        except Exception as error:
+            await self.close()
+            raise ConnectionError(
+                f"Failed to connect to {self._ws_url}: {error}"
+            ) from error
+        return self
+
+    async def _disconnect_async(self) -> None:
+        # OpenEnv 0.4.2 destroys the session before sending its close frame.
+        # Let the server initiate that frame instead of racing it with ws.close().
+        ws, loop = self._ws, self._ws_loop
+        self._ws = None
+        self._ws_loop = None
+        if ws is None or loop is not asyncio.get_running_loop():
+            return
+        try:
+            try:
+                await ws.send(json.dumps({"type": "close"}))
+            except ConnectionClosed:
+                await ws.wait_closed()
+                return
+            try:
+                await asyncio.wait_for(ws.wait_closed(), timeout=self._connect_timeout)
+            except TimeoutError:
+                # A stalled server must not keep controller cleanup unbounded.
+                await ws.close()
+        finally:
+            await ws.close()
+
+    def _step_payload(self, action: ItopsAction) -> dict:
+        return action.model_dump()
+
+    def _parse_result(self, payload: dict) -> StepResult[ItopsObservation]:
+        observation = ItopsObservation.model_validate(
+            payload.get("observation", {})
+            | {
+                "done": payload.get("done", False),
+                "reward": payload.get("reward", 0.0),
+            }
+        )
         return StepResult(
             observation=observation,
-            reward=payload.get("reward"),
-            done=payload.get("done", False),
+            reward=observation.reward,
+            done=observation.done,
             metadata=payload.get("metadata"),
         )
 
-    def _parse_state(self, payload: dict) -> State:
-        """
-        Parse server response into State object.
-
-        Args:
-            payload: JSON response from state request
-
-        Returns:
-            State object with episode_id and step_count
-        """
-        return State(
-            episode_id=payload.get("episode_id"),
-            step_count=payload.get("step_count", 0),
-        )
+    def _parse_state(self, payload: dict) -> ItopsState:
+        return ItopsState.model_validate(payload)

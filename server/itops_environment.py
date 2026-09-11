@@ -1,113 +1,156 @@
-# SPDX-License-Identifier: BSD-3-Clause
+"""Typed OpenEnv boundary around one shared episode and one transition lock."""
 
-"""
-Itops Env Environment Implementation.
-
-A simple test environment that echoes back messages sent to it.
-Perfect for testing HTTP server infrastructure.
-"""
-
+import sqlite3
+from threading import RLock
 from typing import Any
 from uuid import uuid4
 
-from itops_env.models import ItopsAction, ItopsObservation
+from itops_env.models import ItopsAction, ItopsObservation, ItopsState
 from openenv.core.env_server.interfaces import Environment
-from openenv.core.env_server.types import State
+
+from .core.episode import Episode
+from .core.scenarios import Scenario, load_scenario
+from .core.tracing import TraceStore, record_failure
 
 
-class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, State]):
-    """
-    A simple echo environment that echoes back messages.
+class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, ItopsState]):
+    SUPPORTS_CONCURRENT_SESSIONS = True
 
-    This environment is designed for testing the HTTP server infrastructure.
-    It maintains minimal state and simply echoes back whatever message it receives.
-
-    Example:
-        >>> env = ItopsEnvironment()
-        >>> obs = env.reset()
-        >>> print(obs.echoed_message)  # "Itops Env environment ready!"
-        >>>
-        >>> obs = env.step(ItopsAction(message="Hello"))
-        >>> print(obs.echoed_message)  # "Hello"
-        >>> print(obs.message_length)  # 5
-    """
-
-    # Enable concurrent WebSocket sessions.
-    # Set to True if your environment isolates state between instances.
-    # When True, multiple WebSocket clients can connect simultaneously, each
-    # getting their own environment instance (when using factory mode in app.py).
-    SUPPORTS_CONCURRENT_SESSIONS: bool = True
-
-    def __init__(self):
-        """Initialize the itops_env environment."""
+    def __init__(
+        self, scenario: Scenario | str = "identity-group-v1", lock=None, binding=None
+    ):
         super().__init__()
-        self._state = State(episode_id=str(uuid4()), step_count=0)
-        self._reset_count = 0
+        self._scenario = scenario
+        self._binding = binding
+        self._lock = (
+            binding.lock
+            if binding is not None
+            else (lock if lock is not None else RLock())
+        )
+        self.episode: Episode | None = None
+        self.traces = binding.traces if binding is not None else TraceStore()
 
     def reset(
-        self,
-        seed: int | None = None,
-        episode_id: str | None = None,
-        **kwargs: Any,
+        self, seed: int | None = None, episode_id: str | None = None, **kwargs: Any
     ) -> ItopsObservation:
-        """
-        Reset the environment.
+        with self._lock:
+            reset_id = uuid4().hex
 
-        Echo behavior is deterministic, so seed does not affect the result.
+            def emit(event, **fields):
+                self.traces.emit(
+                    self.traces.transport_id,
+                    event,
+                    reset_id=reset_id,
+                    episode_trace_id=self.episode.trace_id if self.episode else None,
+                    **fields,
+                )
 
-        Returns:
-            ItopsObservation with a ready message
-        """
-        self._state = State(
-            episode_id=episode_id if episode_id is not None else str(uuid4()),
-            step_count=0,
-        )
-        self._reset_count += 1
+            emit(
+                "environment.reset_started",
+                requested={"seed": seed, "episode_id": episode_id, **kwargs},
+            )
+            try:
+                observation = self._reset(seed=seed, episode_id=episode_id, **kwargs)
+            except BaseException as error:
+                record_failure(emit, "environment.reset_failed", error)
+                raise
+            emit("environment.reset_completed")
+            return observation
 
-        return ItopsObservation(
-            echoed_message="Itops Env environment ready!",
-            message_length=0,
-            done=False,
-            reward=0.0,
-        )
+    def _reset(
+        self, seed: int | None = None, episode_id: str | None = None, **kwargs: Any
+    ) -> ItopsObservation:
+        with self._lock:
+            if self._binding is not None and self._binding.env not in (None, self):
+                raise RuntimeError("Another controller owns the episode")
+            if seed is not None and (
+                type(seed) is not int or seed < 0 or seed > 2**63 - 1
+            ):
+                raise ValueError("seed must be an integer in [0, 2**63 - 1]")
+            if kwargs:
+                raise ValueError(
+                    "Reset accepts seed and episode_id only; scenario selection is controller-owned"
+                )
+            if episode_id is not None and (
+                not isinstance(episode_id, str) or not episode_id
+            ):
+                raise ValueError("episode_id must be a nonempty string")
+            scenario = (
+                load_scenario(self._scenario)
+                if isinstance(self._scenario, str)
+                else Scenario.model_validate(self._scenario.model_dump())
+            )
+            fresh = Episode(
+                scenario,
+                episode_id or str(uuid4()),
+                seed if seed is not None else 0,
+                self._lock,
+                traces=self.traces,
+            )
+            try:
+                fresh.initialize()
+            except BaseException as error:
+                try:
+                    fresh.close()
+                except (sqlite3.Error, OSError) as cleanup_error:
+                    error.add_note(
+                        f"Failed initialization cleanup failed: {cleanup_error}"
+                    )
+                raise
+            try:
+                # Revoke the old identity even if its finalization fails. Do not
+                # publish the replacement until the old resources are closed.
+                self.close()
+            except BaseException as error:
+                try:
+                    fresh.close()
+                except (sqlite3.Error, OSError) as cleanup_error:
+                    error.add_note(
+                        f"Unpublished replacement cleanup failed: {cleanup_error}"
+                    )
+                raise
+            self.episode = fresh
+            if self._binding is not None:
+                self._binding.bind(self)
+            return ItopsObservation(
+                instruction=scenario.instruction, policy=scenario.policy
+            )
+
+    async def reset_async(
+        self, seed: int | None = None, episode_id: str | None = None, **kwargs: Any
+    ) -> ItopsObservation:
+        try:
+            return self.reset(seed=seed, episode_id=episode_id, **kwargs)
+        finally:
+            if self._binding is not None:
+                await self._binding.drain_native()
 
     def step(
-        self,
-        action: ItopsAction,
-        timeout_s: float | None = None,
-        **kwargs: Any,
+        self, action: ItopsAction, timeout_s: float | None = None, **kwargs: Any
     ) -> ItopsObservation:
-        """
-        Execute a step in the environment by echoing the message.
+        with self._lock:
+            if self.episode is None:
+                raise RuntimeError("Reset is required before stepping")
+            return self.episode.dispatch(action)
 
-        Args:
-            action: ItopsAction containing the message to echo
-
-        Returns:
-            ItopsObservation with the echoed message and its length
-        """
-        self._state.step_count += 1
-
-        message = action.message
-        length = len(message)
-
-        # Simple reward: longer messages get higher rewards
-        reward = length * 0.1
-
-        return ItopsObservation(
-            echoed_message=message,
-            message_length=length,
-            done=False,
-            reward=reward,
-            metadata={"original_message": message, "step": self._state.step_count},
-        )
+    async def step_async(
+        self, action: ItopsAction, timeout_s: float | None = None, **kwargs: Any
+    ) -> ItopsObservation:
+        return self.step(action, timeout_s=timeout_s, **kwargs)
 
     @property
-    def state(self) -> State:
-        """
-        Get the current environment state.
+    def state(self) -> ItopsState:
+        with self._lock:
+            return self.episode.state if self.episode is not None else ItopsState()
 
-        Returns:
-            Current State with episode_id and step_count
-        """
-        return self._state
+    def close(self):
+        with self._lock:
+            try:
+                if self.episode is not None:
+                    self.episode.close()
+            finally:
+                if self._binding is not None and self._binding.env is self:
+                    self._binding.env = None
+                    self._binding.capability = None
+                    self._binding.generation = None
+                    self._binding.schedule_native_drain()

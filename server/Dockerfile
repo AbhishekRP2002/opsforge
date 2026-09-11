@@ -9,6 +9,9 @@
 ARG BASE_IMAGE=ghcr.io/huggingface/openenv-base:latest
 FROM ${BASE_IMAGE} AS builder
 
+# BuildKit cache and installed environment are separate filesystems.
+ENV UV_LINK_MODE=copy
+
 WORKDIR /app
 
 # Ensure git is available (required for installing dependencies from VCS)
@@ -64,13 +67,9 @@ COPY --from=builder /app/env /app/env
 # Set PATH to use the virtual environment
 ENV PATH="/app/.venv/bin:$PATH"
 
-# Set PYTHONPATH so imports work correctly
-ENV PYTHONPATH="/app/env:$PYTHONPATH"
-
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# Run the FastAPI server
-# The module path is constructed to work with the /app/env structure
-CMD ["sh", "-c", "cd /app/env && uvicorn server.app:app --host 0.0.0.0 --port 8000"]
+# Run the installed package with the required controller-token startup check.
+CMD ["python", "-m", "itops_env.server.app"]

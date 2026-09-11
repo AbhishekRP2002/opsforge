@@ -1,0 +1,22 @@
+{
+  "name": "identity-group-v1", "version": "1", "policy_version": "1",
+  "instruction": "Identify the active Okta account for alex.chen@example.test, find its corresponding ServiceNow user, and add exactly that user to the Asset Support group (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa). Then submit completed with the ServiceNow user and group IDs.",
+  "policy": "Read the target account using Okta get_user and the corresponding record using ServiceNow get_user before adding membership. Add exactly one target membership to the supplied group. Do not add another user, another group, or duplicate memberships. Explicit workflow_submit is required; summary text is not evidence. This is an inspectable public development fixture.",
+  "target_okta_id": "00u-target", "target_user_id": "11111111111111111111111111111111", "target_group_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "identity_links": {"00u-target": "11111111111111111111111111111111", "00u-other": "22222222222222222222222222222222"},
+  "okta_users": [
+    {"id": "00u-target", "login": "alex.chen@example.test", "email": "alex.chen@example.test", "first_name": "Alex", "last_name": "Chen", "status": "ACTIVE"},
+    {"id": "00u-other", "login": "sam.lee@example.test", "email": "sam.lee@example.test", "first_name": "Sam", "last_name": "Lee", "status": "ACTIVE"}
+  ],
+  "servicenow_users": [
+    {"sys_id": "11111111111111111111111111111111", "user_name": "alex.chen", "email": "alex.chen@example.test", "name": "Alex Chen", "active": true},
+    {"sys_id": "22222222222222222222222222222222", "user_name": "sam.lee", "email": "sam.lee@example.test", "name": "Sam Lee", "active": true}
+  ],
+  "servicenow_groups": [
+    {"sys_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "name": "Asset Support", "available": true},
+    {"sys_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "name": "Finance Support", "available": true}
+  ],
+  "events": [],
+  "costs": {"okta.get_user": 1, "servicenow.get_user": 1, "servicenow.add_group_members": 1, "benchmark.workflow_submit": 0, "invalid": 1},
+  "horizon": 60, "step_budget": 20
+}

@@ -1,12 +1,6 @@
-# SPDX-License-Identifier: BSD-3-Clause
-
-"""Itops Env Environment."""
+"""OpsForge public OpenEnv client and models."""
 
 from .client import ItopsEnv
-from .models import ItopsAction, ItopsObservation
+from .models import ItopsAction, ItopsObservation, ItopsState
 
-__all__ = [
-    "ItopsAction",
-    "ItopsEnv",
-    "ItopsObservation",
-]
+__all__ = ["ItopsAction", "ItopsEnv", "ItopsObservation", "ItopsState"]

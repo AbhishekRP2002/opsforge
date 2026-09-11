@@ -1,23 +1,29 @@
-# SPDX-License-Identifier: BSD-3-Clause
+"""Public OpenEnv boundary; trusted grading evidence stays in the episode."""
 
-"""
-Data models for the Itops Env Environment.
+from typing import Any, Literal
+from uuid import uuid4
 
-The itops_env environment is a simple test environment that echoes back messages.
-"""
-
-from openenv.core.env_server.types import Action, Observation
+from openenv.core.env_server.types import Action, Observation, State
 from pydantic import Field
 
 
 class ItopsAction(Action):
-    """Action for the Itops Env environment - just a message to echo."""
-
-    message: str = Field(..., description="Message to echo back")
+    provider: str
+    tool_name: str
+    arguments: dict[str, Any] = Field(default_factory=dict)
+    invocation_id: str = Field(default_factory=lambda: str(uuid4()), min_length=1)
 
 
 class ItopsObservation(Observation):
-    """Observation from the Itops Env environment - the echoed message."""
+    content: list[dict[str, Any]] = Field(default_factory=list)
+    structured_content: dict[str, Any] | None = None
+    is_error: bool = False
+    instruction: str | None = None
+    policy: str | None = None
+    reward: float = 0.0
 
-    echoed_message: str = Field(default="", description="The echoed message")
-    message_length: int = Field(default=0, description="Length of the echoed message")
+
+class ItopsState(State):
+    phase: Literal["uninitialized", "active", "terminal", "closed"] = "uninitialized"
+    simulated_clock: int = 0
+    remaining_budget: int = 0
