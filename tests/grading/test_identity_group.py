@@ -35,6 +35,8 @@ def test_identity_group_grading(failure):
     env = ItopsEnvironment()
     env.reset()
     try:
+        assert env.episode is not None
+        first = None
         if failure not in {"missing_okta_read", "late_reads"}:
             act(env, "okta", "get_user", user_id="00u-target")
         if failure not in {"missing_snow_read", "late_reads"}:
@@ -73,14 +75,13 @@ def test_identity_group_grading(failure):
             assert duplicate.done
         assert env.state.phase == "terminal"
         result = env.episode.result()
+        assert result is not None
         assert result.status == ("success" if failure is None else "failure")
         assert result == env.episode.result()
         assert "evidence" not in env.state.model_dump()
-        assert (
-            "evidence" not in first.model_dump()
-            if failure != "missing_submit"
-            else True
-        )
+        if failure != "missing_submit":
+            assert first is not None
+            assert "evidence" not in first.model_dump()
     finally:
         env.close()
 
@@ -91,6 +92,7 @@ def test_grader_allows_non_gold_trajectory_and_freezes_nested_artifact():
     env = ItopsEnvironment()
     env.reset()
     try:
+        assert env.episode is not None
         act(env, "servicenow", "get_user", user_name="alex.chen")
         act(env, "okta", "get_user", user_id="alex.chen@example.test")
         act(env, "okta", "get_user", user_id="00u-other")
@@ -114,6 +116,7 @@ def test_grader_allows_non_gold_trajectory_and_freezes_nested_artifact():
         )
         assert first.reward == 1
         result = env.episode.result()
+        assert result is not None
         with pytest.raises(ValidationError):
             result.reward = 0
         with pytest.raises(ValidationError):

@@ -24,7 +24,7 @@ def test_provider_tools_are_typed_fastmcp_functions():
                 "workflow_submit": {"disposition", "user_id", "group_id", "summary"},
             },
         }.items():
-            server = factory(binding, provider)
+            server = providers.create_provider_server(binding, provider)
             for name, arguments in expected.items():
                 tool = await server.get_tool(name)
                 assert isinstance(tool, FunctionTool)

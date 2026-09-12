@@ -116,11 +116,11 @@ def bind_native_lifecycle(child, binding):
 
     original_serve = manager._serve_opening_request
 
-    async def serve(transport, scope, receive, send):
+    async def serve(http_transport, scope, receive, send):
         try:
-            await original_serve(transport, scope, receive, send)
+            await original_serve(http_transport, scope, receive, send)
         finally:
-            ready = binding.native_starting.pop(transport, None)
+            ready = binding.native_starting.pop(http_transport, None)
             if ready is not None:
                 ready.set()
 

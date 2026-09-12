@@ -290,6 +290,7 @@ def test_auth_surfaces_capacity_and_abrupt_disconnect(live_server):
                 async with ItopsEnv(base_url=url, controller_token=TOKEN) as other:
                     await other.reset()
             episode = app.state.binding.env.episode
+            assert owner._ws is not None
             owner._ws.transport.abort()
             await owner.close()
             for _ in range(100):
@@ -519,6 +520,7 @@ def test_app_lifespan_closes_owned_database():
             env = ItopsEnvironment(binding=app.state.binding)
             env.reset()
             episode = env.episode
+            assert episode is not None
             capability = app.state.binding.capability
         assert episode.state.phase == "closed"
         assert not app.state.binding.matches(capability)
@@ -630,6 +632,7 @@ def test_generation_rollover_drains_attached_native_sessions(live_server):
                     for manager in app.state.binding.native_managers
                     for transport in manager._server_instances.values()
                 ]
+                assert owner._ws is not None
                 owner._ws.transport.abort()
                 await owner.close()
                 for _ in range(100):
@@ -861,10 +864,12 @@ def test_sqlite_finalization_failure_denies_stale_native_and_releases_owner(
                     env.episode is old and old.result().status == "infrastructure_error"
                 )
                 assert binding.env is None and not directory.exists()
+                session_id = sid()
+                assert session_id is not None
                 stale = await http.post(
                     config["mcpServers"]["okta"]["url"],
                     headers={
-                        "mcp-session-id": sid(),
+                        "mcp-session-id": session_id,
                         "Accept": "application/json, text/event-stream",
                     },
                     json={
@@ -900,6 +905,8 @@ def test_app_shutdown_finalization_failure_still_drains_and_revokes():
     async def check():
         app = create_opsforge_app(TOKEN)
         binding = app.state.binding
+        old = None
+        directory = None
         with pytest.RaisesGroup(
             pytest.RaisesExc(sqlite3.IntegrityError, match="shutdown result failure"),
             flatten_subgroups=True,
@@ -908,13 +915,17 @@ def test_app_shutdown_finalization_failure_still_drains_and_revokes():
                 env = ItopsEnvironment(binding=binding)
                 env.reset()
                 old = env.episode
+                assert old is not None
                 directory = old.db.directory
                 old.db.connection.execute(
                     "CREATE TRIGGER fail_result BEFORE INSERT ON result BEGIN SELECT RAISE(ABORT, 'shutdown result failure'); END"
                 )
         assert binding.env is None and binding.capability is None
         assert binding.native_loop is None and not binding.native_drains
-        assert old.result().status == "infrastructure_error"
+        assert old is not None and directory is not None
+        result = old.result()
+        assert result is not None
+        assert result.status == "infrastructure_error"
         assert not directory.exists()
 
     asyncio.run(check())

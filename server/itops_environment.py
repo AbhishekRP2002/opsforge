@@ -11,6 +11,7 @@ from openenv.core.env_server.interfaces import Environment
 from .core.episode import Episode
 from .core.scenarios import Scenario, load_scenario
 from .core.tracing import TraceStore, record_failure
+from .rubrics import ItopsOutcomeRubric
 
 
 class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, ItopsState]):
@@ -19,7 +20,7 @@ class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, ItopsState]):
     def __init__(
         self, scenario: Scenario | str = "identity-group-v1", lock=None, binding=None
     ):
-        super().__init__()
+        super().__init__(rubric=ItopsOutcomeRubric())
         self._scenario = scenario
         self._binding = binding
         self._lock = (
@@ -110,6 +111,7 @@ class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, ItopsState]):
                     )
                 raise
             self.episode = fresh
+            self._reset_rubric()
             if self._binding is not None:
                 self._binding.bind(self)
             return ItopsObservation(
@@ -131,7 +133,15 @@ class ItopsEnvironment(Environment[ItopsAction, ItopsObservation, ItopsState]):
         with self._lock:
             if self.episode is None:
                 raise RuntimeError("Reset is required before stepping")
-            return self.episode.dispatch(action)
+            before = self.episode.state.step_count
+            observation = self.episode.dispatch(action)
+            if self.episode.state.step_count > before:
+                assert isinstance(self.rubric, ItopsOutcomeRubric)
+                self._apply_rubric(
+                    action.model_copy(deep=True), observation.model_copy(deep=True)
+                )
+                self.episode.trace("rubric.updated", rubric=self.rubric.diagnostics())
+            return observation
 
     async def step_async(
         self, action: ItopsAction, timeout_s: float | None = None, **kwargs: Any

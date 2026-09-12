@@ -2,6 +2,7 @@
 
 import asyncio
 import secrets
+from concurrent.futures import Future
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from threading import RLock
@@ -14,7 +15,13 @@ from starlette.responses import JSONResponse
 from ..core.tracing import TraceStore
 
 if TYPE_CHECKING:
+    from mcp.server.streamable_http import StreamableHTTPServerTransport
+    from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
+
+    from ..core.episode import Episode
     from ..itops_environment import ItopsEnvironment
+
+from ..rubrics import ItopsOutcomeRubric
 
 
 class EpisodeBinding:
@@ -24,12 +31,12 @@ class EpisodeBinding:
         self.env: ItopsEnvironment | None = None
         self.capability: str | None = None
         self.generation: str | None = None
-        self.native_managers = []
-        self.native_starting = {}
-        self.native_loop = None
-        self.native_drains = []
+        self.native_managers: list[StreamableHTTPSessionManager] = []
+        self.native_starting: dict[StreamableHTTPServerTransport, asyncio.Event] = {}
+        self.native_loop: asyncio.AbstractEventLoop | None = None
+        self.native_drains: list[Future[None]] = []
 
-    def bind(self, env):
+    def bind(self, env: "ItopsEnvironment") -> None:
         self.env = env
         self.capability = secrets.token_urlsafe(32)
         self.generation = secrets.token_hex(16)
@@ -43,7 +50,7 @@ class EpisodeBinding:
                 and secrets.compare_digest(token, self.capability)
             )
 
-    def require(self):
+    def require(self) -> "Episode":
         if self.env is None or self.env.episode is None:
             raise HTTPException(
                 409, "No owned episode; open controller WebSocket and reset first"
@@ -63,7 +70,7 @@ class EpisodeBinding:
                 asyncio.run_coroutine_threadsafe(self._drain_stale(), self.native_loop)
             )
 
-    async def _drain_stale(self):
+    async def _drain_stale(self) -> None:
         with self.lock:
             stale = [
                 (manager, session_id, transport, self.native_starting.get(transport))
@@ -139,21 +146,27 @@ def register_control(app: FastAPI, binding: EpisodeBinding):
     def result():
         with binding.lock:
             episode = binding.require()
+            assert binding.env is not None
+            assert isinstance(binding.env.rubric, ItopsOutcomeRubric)
             result = episode.result()
             return {
                 "result": result.model_dump(mode="json") if result else None,
                 "trace_id": episode.trace_id,
                 "transport_trace_id": binding.traces.transport_id,
+                "rubric": binding.env.rubric.diagnostics(),
             }
 
     @app.post("/control/finalize")
     def finalize():
         with binding.lock:
             episode = binding.require()
+            assert binding.env is not None
+            assert isinstance(binding.env.rubric, ItopsOutcomeRubric)
             return {
                 "result": episode.finalize().model_dump(mode="json"),
                 "trace_id": episode.trace_id,
                 "transport_trace_id": binding.traces.transport_id,
+                "rubric": binding.env.rubric.diagnostics(),
             }
 
     @app.get("/control/trace")
