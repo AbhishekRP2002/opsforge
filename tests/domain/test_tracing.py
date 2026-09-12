@@ -17,6 +17,7 @@ def records(path):
 def test_trace_retains_replays_conflicts_rejections_and_lifecycle(trace_directory):
     env = ItopsEnvironment()
     env.reset(episode_id="same")
+    assert env.episode is not None
     trace_id = env.episode.trace_id
     action = ItopsAction(
         provider="okta",
@@ -65,6 +66,7 @@ def test_trace_retains_replays_conflicts_rejections_and_lifecycle(trace_director
 def test_sqlite_rollback_does_not_erase_error_trace(trace_directory):
     env = ItopsEnvironment()
     env.reset()
+    assert env.episode is not None
     path = trace_directory / f"{env.episode.trace_id}.jsonl"
     env.episode.db.connection.execute(
         "CREATE TRIGGER fail_insert BEFORE INSERT ON servicenow_memberships BEGIN SELECT RAISE(ABORT, 'trace rollback test'); END"
@@ -81,7 +83,9 @@ def test_sqlite_rollback_does_not_erase_error_trace(trace_directory):
             )
         )
     assert env.state.step_count == 0
-    assert env.episode.result().status == "infrastructure_error"
+    result = env.episode.result()
+    assert result is not None
+    assert result.status == "infrastructure_error"
     env.close()
     failure = next(event for event in records(path) if event["event"] == "tool.failed")
     assert failure["error"]["type"] == "IntegrityError"
@@ -92,6 +96,7 @@ def test_sqlite_rollback_does_not_erase_error_trace(trace_directory):
 def test_trace_write_failure_prevents_action(trace_directory):
     env = ItopsEnvironment()
     env.reset()
+    assert env.episode is not None
     path = trace_directory / f"{env.episode.trace_id}.jsonl"
     saved = path.read_bytes()
     path.unlink()
@@ -126,6 +131,7 @@ def test_trace_records_committed_partial_effects_and_horizon_events(trace_direct
 
     env = ItopsEnvironment(Scenario.model_validate(scenario))
     env.reset()
+    assert env.episode is not None
     path = trace_directory / f"{env.episode.trace_id}.jsonl"
     result = env.step(
         ItopsAction(
@@ -166,6 +172,7 @@ def test_trace_failure_during_close_still_disposes_and_revokes(trace_directory):
     env = ItopsEnvironment(binding=binding)
     env.reset()
     episode = env.episode
+    assert episode is not None
     directory = episode.db.directory
     path = trace_directory / f"{episode.trace_id}.jsonl"
     path.unlink()
@@ -182,6 +189,7 @@ def test_invalid_reset_is_traced_without_replacing_episode(trace_directory):
     env = ItopsEnvironment()
     env.reset()
     original = env.episode
+    assert original is not None
     try:
         with pytest.raises(ValueError, match="seed"):
             env.reset(seed=-1)

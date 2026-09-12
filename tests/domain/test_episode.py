@@ -133,6 +133,7 @@ def test_reset_isolation_backup_cleanup_and_independent_instances(env, tmp_path)
     other = ItopsEnvironment()
     assert other.episode is None
     other.reset()
+    assert other.episode is not None
     call(env, "servicenow", "add_group_members", group_id=GROUP, members=["alex.chen"])
     assert (
         other.episode.db.connection.execute(
@@ -232,6 +233,7 @@ def test_delayed_availability_wait_replay_and_horizon():
     for _ in range(2):
         env = ItopsEnvironment(scenario=scenario)
         env.reset(seed=7)
+        assert env.episode is not None
         trace = [
             body(
                 call(
@@ -262,7 +264,9 @@ def test_delayed_availability_wait_replay_and_horizon():
         ).fetchone()[0]
         assert call(env, "benchmark", "workflow_wait", seconds=1000).done
         assert env.state.simulated_clock == scenario.horizon
-        assert env.episode.result().terminal_reason == "horizon"
+        result = env.episode.result()
+        assert result is not None
+        assert result.terminal_reason == "horizon"
         assert (
             env.episode.db.connection.execute(
                 "select count(*) from servicenow_memberships"
@@ -282,12 +286,17 @@ def test_step_budget_and_horizon_crossing_do_not_infer_success():
     instance = ItopsEnvironment(scenario=Scenario.model_validate(data))
     instance.reset()
     try:
+        assert instance.episode is not None
+        observation = None
         for _ in range(4):
             observation = call(instance, "unknown", "unknown")
+        assert observation is not None
         assert observation.done
         assert instance.state.remaining_budget == 0
-        assert instance.episode.result().terminal_reason == "step_budget"
-        assert instance.episode.result().reward == 0
+        result = instance.episode.result()
+        assert result is not None
+        assert result.terminal_reason == "step_budget"
+        assert result.reward == 0
     finally:
         instance.close()
     data["horizon"] = 6
@@ -295,6 +304,7 @@ def test_step_budget_and_horizon_crossing_do_not_infer_success():
     instance = ItopsEnvironment(scenario=Scenario.model_validate(data))
     instance.reset()
     try:
+        assert instance.episode is not None
         call(instance, "benchmark", "workflow_wait", seconds=5)
         assert call(
             instance,
@@ -325,6 +335,7 @@ def test_equal_time_events_follow_sequence():
     instance = ItopsEnvironment(scenario=Scenario.model_validate(data))
     instance.reset()
     try:
+        assert instance.episode is not None
         call(instance, "benchmark", "workflow_wait", seconds=2)
         assert (
             body(
@@ -473,6 +484,7 @@ def test_due_event_rolls_back_with_failing_provider_write():
     instance = ItopsEnvironment(scenario=Scenario.model_validate(data))
     instance.reset()
     try:
+        assert instance.episode is not None
         db = instance.episode.db.connection
         db.execute(
             "CREATE TRIGGER fail_insert BEFORE INSERT ON servicenow_memberships "
@@ -498,7 +510,9 @@ def test_due_event_rolls_back_with_failing_provider_write():
         )
         assert instance.state.simulated_clock == 0
         assert instance.state.step_count == 0
-        assert instance.episode.result().status == "infrastructure_error"
+        result = instance.episode.result()
+        assert result is not None
+        assert result.status == "infrastructure_error"
     finally:
         instance.close()
 
@@ -524,6 +538,8 @@ def test_finalization_failure_revokes_owner_and_disposes_resources(
     env.reset()
     old = env.episode
     capability, generation = binding.capability, binding.generation
+    assert old is not None
+    assert capability is not None
     old.db.connection.execute(
         "CREATE TRIGGER fail_result BEFORE INSERT ON result BEGIN SELECT RAISE(ABORT, 'injected result persistence failure'); END"
     )
@@ -533,8 +549,10 @@ def test_finalization_failure_revokes_owner_and_disposes_resources(
         ) as caught:
             getattr(env, operation)()
         assert env.episode is old
-        assert old.result().status == "infrastructure_error"
-        assert old.result().reward == 0
+        result = old.result()
+        assert result is not None
+        assert result.status == "infrastructure_error"
+        assert result.reward == 0
         assert old.state.phase == "closed"
         assert (
             "Infrastructure result could not be persisted" in caught.value.__notes__[0]
@@ -574,6 +592,7 @@ def test_reset_preserves_original_error_if_unpublished_cleanup_also_fails(monkey
     env = ItopsEnvironment(binding=binding)
     env.reset()
     old = env.episode
+    assert old is not None
     old.db.connection.execute(
         "CREATE TRIGGER fail_result BEFORE INSERT ON result BEGIN SELECT RAISE(ABORT, 'old result failure'); END"
     )
@@ -594,7 +613,9 @@ def test_reset_preserves_original_error_if_unpublished_cleanup_also_fails(monkey
         "Unpublished replacement cleanup failed: replacement result failure" in note
         for note in caught.value.__notes__
     )
-    assert env.episode is old and old.result().status == "infrastructure_error"
+    result = old.result()
+    assert result is not None
+    assert env.episode is old and result.status == "infrastructure_error"
     assert binding.env is None
     assert all(
         not db.is_open and not db.directory.exists() for db in replacement_databases

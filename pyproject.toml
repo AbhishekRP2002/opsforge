@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -24,6 +24,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "pyright",
     "pytest>=8.0.0",
     "ruff>=0.14.0",
 ]
@@ -41,3 +42,15 @@ package-dir = { "itops_env" = ".", "itops_env.server" = "server" }
 [tool.setuptools.package-data]
 "itops_env.server.storage.migrations" = ["*.sql"]
 "itops_env.resources.development" = ["*.json"]
+
+[tool.uv.config-settings]
+# Expose the mapped itops_env package through paths that static checkers can read.
+editable_mode = "strict"
+
+[tool.pyright]
+include = ["*.py", "harness", "server", "resources", "examples", "tests"]
+exclude = [".venv", "build", "dist"]
+pythonVersion = "3.11"
+typeCheckingMode = "standard"
+venvPath = "."
+venv = ".venv"

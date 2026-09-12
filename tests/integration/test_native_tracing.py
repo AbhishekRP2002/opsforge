@@ -26,10 +26,12 @@ def test_native_trace_and_archived_controller_export(live_server):
                         await client.call_tool("get_user", {"user_id": "00u-target"})
                     ).isError
                     assert (await client.call_tool("get_user", {"user_id": 42})).isError
+                    session_id = sid()
+                    assert session_id is not None
                     invalid = await http.post(
                         config["mcpServers"]["okta"]["url"],
                         headers={
-                            "mcp-session-id": sid(),
+                            "mcp-session-id": session_id,
                             "Accept": "application/json, text/event-stream",
                         },
                         json={

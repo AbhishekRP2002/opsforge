@@ -20,7 +20,9 @@ class ItopsObservation(Observation):
     is_error: bool = False
     instruction: str | None = None
     policy: str | None = None
-    reward: float = 0.0
+    # Pydantic validates this narrower field on construction; preserve the public
+    # numeric reward schema instead of inheriting OpenEnv's nullable/bool union.
+    reward: float = 0.0  # pyright: ignore[reportIncompatibleVariableOverride]
 
 
 class ItopsState(State):
