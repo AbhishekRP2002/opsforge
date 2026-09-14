@@ -1,0 +1,3989 @@
+{
+  "list_applications": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "list_applications",
+    "source_lines": [
+      58,
+      154
+    ],
+    "properties": {
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "filter": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "include_non_deleted": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.apps.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "get_application",
+    "source_lines": [
+      161,
+      200
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "app_id"
+    ],
+    "scopes": [
+      "okta.apps.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "create_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "create_application",
+    "source_lines": [
+      206,
+      243
+    ],
+    "properties": {
+      "app_config": {
+        "type": "object"
+      },
+      "activate": {
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "required": [
+      "app_config"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "update_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "update_application",
+    "source_lines": [
+      250,
+      286
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      },
+      "app_config": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "app_id",
+      "app_config"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "delete_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "delete_application",
+    "source_lines": [
+      293,
+      350
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "app_id"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "confirm_delete_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "confirm_delete_application",
+    "source_lines": [
+      357,
+      398
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      },
+      "confirmation": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "app_id",
+      "confirmation"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "activate_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "activate_application",
+    "source_lines": [
+      405,
+      433
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "app_id"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "deactivate_application": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "deactivate_application",
+    "source_lines": [
+      440,
+      479
+    ],
+    "properties": {
+      "app_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "app_id"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "app_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_catalog_apps": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "list_catalog_apps",
+    "source_lines": [
+      556,
+      685
+    ],
+    "properties": {
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.apps.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_catalog_app": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "get_catalog_app",
+    "source_lines": [
+      692,
+      723
+    ],
+    "properties": {
+      "app_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "app_name"
+    ],
+    "scopes": [
+      "okta.apps.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "app_name"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "install_oin_app": {
+    "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+    "source_function": "install_oin_app",
+    "source_lines": [
+      730,
+      790
+    ],
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "label": {
+        "type": "string"
+      },
+      "sign_on_mode": {
+        "type": "string"
+      },
+      "settings": {
+        "anyOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "activate": {
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "required": [
+      "name",
+      "label",
+      "sign_on_mode"
+    ],
+    "scopes": [
+      "okta.apps.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "name"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "list_brands": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "list_brands",
+    "source_lines": [
+      61,
+      165
+    ],
+    "properties": {
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_brand": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "get_brand",
+    "source_lines": [
+      176,
+      222
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "create_brand": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "create_brand",
+    "source_lines": [
+      232,
+      303
+    ],
+    "properties": {
+      "name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "replace_brand": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "replace_brand",
+    "source_lines": [
+      314,
+      402
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "agree_to_custom_privacy_policy": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "custom_privacy_policy_url": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "remove_powered_by_okta": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "locale": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "email_domain_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "default_app": {
+        "anyOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "name"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_brand": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "delete_brand",
+    "source_lines": [
+      413,
+      466
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_brand_domains": {
+    "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+    "source_function": "list_brand_domains",
+    "source_lines": [
+      477,
+      527
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_custom_domains": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "list_custom_domains",
+    "source_lines": [
+      55,
+      99
+    ],
+    "properties": {},
+    "required": [],
+    "scopes": [
+      "okta.domains.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "create_custom_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "create_custom_domain",
+    "source_lines": [
+      109,
+      228
+    ],
+    "properties": {
+      "domain": {
+        "type": "string"
+      },
+      "certificate_source_type": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain",
+      "certificate_source_type"
+    ],
+    "scopes": [
+      "okta.domains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_custom_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "get_custom_domain",
+    "source_lines": [
+      239,
+      278
+    ],
+    "properties": {
+      "domain_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain_id"
+    ],
+    "scopes": [
+      "okta.domains.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_custom_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "replace_custom_domain",
+    "source_lines": [
+      289,
+      337
+    ],
+    "properties": {
+      "domain_id": {
+        "type": "string"
+      },
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain_id",
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.domains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "domain_id",
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_custom_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "delete_custom_domain",
+    "source_lines": [
+      348,
+      400
+    ],
+    "properties": {
+      "domain_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain_id"
+    ],
+    "scopes": [
+      "okta.domains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "upsert_custom_domain_certificate": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "upsert_custom_domain_certificate",
+    "source_lines": [
+      411,
+      500
+    ],
+    "properties": {
+      "domain_id": {
+        "type": "string"
+      },
+      "certificate": {
+        "type": "string"
+      },
+      "certificate_chain": {
+        "type": "string"
+      },
+      "private_key_file_path": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain_id",
+      "certificate",
+      "certificate_chain",
+      "private_key_file_path"
+    ],
+    "scopes": [
+      "okta.domains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "verify_custom_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+    "source_function": "verify_custom_domain",
+    "source_lines": [
+      511,
+      580
+    ],
+    "properties": {
+      "domain_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "domain_id"
+    ],
+    "scopes": [
+      "okta.domains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_error_page_resources": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_error_page_resources",
+    "source_lines": [
+      155,
+      194
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_customized_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_customized_error_page",
+    "source_lines": [
+      205,
+      240
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_customized_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "replace_customized_error_page",
+    "source_lines": [
+      247,
+      301
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "page_content": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_mode": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_report_uri": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_src_list": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_customized_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "delete_customized_error_page",
+    "source_lines": [
+      308,
+      350
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_default_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_default_error_page",
+    "source_lines": [
+      361,
+      395
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_preview_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_preview_error_page",
+    "source_lines": [
+      406,
+      440
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_preview_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "replace_preview_error_page",
+    "source_lines": [
+      447,
+      498
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "page_content": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_mode": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_report_uri": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_src_list": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_preview_error_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "delete_preview_error_page",
+    "source_lines": [
+      505,
+      547
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_sign_in_page_resources": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_sign_in_page_resources",
+    "source_lines": [
+      558,
+      597
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_customized_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_customized_sign_in_page",
+    "source_lines": [
+      608,
+      643
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_customized_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "replace_customized_sign_in_page",
+    "source_lines": [
+      650,
+      719
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "page_content": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "widget_version": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "widget_customizations": {
+        "anyOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_mode": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_report_uri": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_src_list": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_customized_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "delete_customized_sign_in_page",
+    "source_lines": [
+      726,
+      769
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_default_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_default_sign_in_page",
+    "source_lines": [
+      780,
+      816
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_preview_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_preview_sign_in_page",
+    "source_lines": [
+      827,
+      862
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_preview_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "replace_preview_sign_in_page",
+    "source_lines": [
+      869,
+      927
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "page_content": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "widget_version": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "widget_customizations": {
+        "anyOf": [
+          {
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_mode": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_report_uri": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "csp_src_list": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_preview_sign_in_page": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "delete_preview_sign_in_page",
+    "source_lines": [
+      934,
+      977
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_sign_in_widget_versions": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "list_sign_in_widget_versions",
+    "source_lines": [
+      988,
+      1031
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_sign_out_page_settings": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "get_sign_out_page_settings",
+    "source_lines": [
+      1042,
+      1080
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_sign_out_page_settings": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+    "source_function": "replace_sign_out_page_settings",
+    "source_lines": [
+      1087,
+      1141
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "url": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "type"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_email_templates": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "list_email_templates",
+    "source_lines": [
+      173,
+      251
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_template": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_template",
+    "source_lines": [
+      258,
+      297
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "expand": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_email_customizations": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "list_email_customizations",
+    "source_lines": [
+      308,
+      380
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "create_email_customization": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "create_email_customization",
+    "source_lines": [
+      387,
+      485
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string"
+      },
+      "subject": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      },
+      "is_default": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "language",
+      "subject",
+      "body"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_customization": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_customization",
+    "source_lines": [
+      492,
+      531
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "customization_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "customization_id"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "customization_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_email_customization": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "replace_email_customization",
+    "source_lines": [
+      538,
+      600
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "customization_id": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string"
+      },
+      "subject": {
+        "type": "string"
+      },
+      "body": {
+        "type": "string"
+      },
+      "is_default": {
+        "anyOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "customization_id",
+      "language",
+      "subject",
+      "body"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "customization_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_email_customization": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "delete_email_customization",
+    "source_lines": [
+      607,
+      666
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "customization_id": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string",
+        "default": "unknown"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "customization_id"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "customization_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_all_email_customizations": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "delete_all_email_customizations",
+    "source_lines": [
+      673,
+      722
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_customization_preview": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_customization_preview",
+    "source_lines": [
+      733,
+      772
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "customization_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "customization_id"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "customization_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_default_content": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_default_content",
+    "source_lines": [
+      783,
+      824
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "language": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_default_content_preview": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_default_content_preview",
+    "source_lines": [
+      831,
+      891
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "language": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_email_settings": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "get_email_settings",
+    "source_lines": [
+      902,
+      938
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_email_settings": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "replace_email_settings",
+    "source_lines": [
+      945,
+      987
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "recipients": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name",
+      "recipients"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "send_test_email": {
+    "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+    "source_function": "send_test_email",
+    "source_lines": [
+      998,
+      1056
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "template_name": {
+        "type": "string"
+      },
+      "language": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "template_name"
+    ],
+    "scopes": [
+      "okta.templates.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_email_domains": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "list_email_domains",
+    "source_lines": [
+      69,
+      125
+    ],
+    "properties": {
+      "expand_brands": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.emailDomains.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "create_email_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "create_email_domain",
+    "source_lines": [
+      135,
+      259
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "domain": {
+        "type": "string"
+      },
+      "display_name": {
+        "type": "string"
+      },
+      "user_name": {
+        "type": "string"
+      },
+      "validation_subdomain": {
+        "type": "string",
+        "default": "mail"
+      }
+    },
+    "required": [
+      "brand_id",
+      "domain",
+      "display_name",
+      "user_name"
+    ],
+    "scopes": [
+      "okta.emailDomains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_email_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "get_email_domain",
+    "source_lines": [
+      270,
+      321
+    ],
+    "properties": {
+      "email_domain_id": {
+        "type": "string"
+      },
+      "expand_brands": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "email_domain_id"
+    ],
+    "scopes": [
+      "okta.emailDomains.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "email_domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_email_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "replace_email_domain",
+    "source_lines": [
+      332,
+      391
+    ],
+    "properties": {
+      "email_domain_id": {
+        "type": "string"
+      },
+      "display_name": {
+        "type": "string"
+      },
+      "user_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "email_domain_id",
+      "display_name",
+      "user_name"
+    ],
+    "scopes": [
+      "okta.emailDomains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "email_domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_email_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "delete_email_domain",
+    "source_lines": [
+      402,
+      474
+    ],
+    "properties": {
+      "email_domain_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "email_domain_id"
+    ],
+    "scopes": [
+      "okta.emailDomains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "email_domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "verify_email_domain": {
+    "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+    "source_function": "verify_email_domain",
+    "source_lines": [
+      485,
+      576
+    ],
+    "properties": {
+      "email_domain_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "email_domain_id"
+    ],
+    "scopes": [
+      "okta.emailDomains.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "email_domain_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_brand_themes": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "list_brand_themes",
+    "source_lines": [
+      83,
+      122
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "get_brand_theme": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "get_brand_theme",
+    "source_lines": [
+      133,
+      176
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id"
+    ],
+    "scopes": [
+      "okta.brands.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "replace_brand_theme": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "replace_brand_theme",
+    "source_lines": [
+      187,
+      294
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      },
+      "primary_color_hex": {
+        "type": "string"
+      },
+      "secondary_color_hex": {
+        "type": "string"
+      },
+      "sign_in_page_touch_point_variant": {
+        "type": "string"
+      },
+      "end_user_dashboard_touch_point_variant": {
+        "type": "string"
+      },
+      "error_page_touch_point_variant": {
+        "type": "string"
+      },
+      "email_template_touch_point_variant": {
+        "type": "string"
+      },
+      "primary_color_contrast_hex": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "secondary_color_contrast_hex": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "loading_page_touch_point_variant": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id",
+      "primary_color_hex",
+      "secondary_color_hex",
+      "sign_in_page_touch_point_variant",
+      "end_user_dashboard_touch_point_variant",
+      "error_page_touch_point_variant",
+      "email_template_touch_point_variant"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "upload_brand_theme_logo": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "upload_brand_theme_logo",
+    "source_lines": [
+      305,
+      358
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      },
+      "file_path": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id",
+      "file_path"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_brand_theme_logo": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "delete_brand_theme_logo",
+    "source_lines": [
+      369,
+      418
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "upload_brand_theme_favicon": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "upload_brand_theme_favicon",
+    "source_lines": [
+      429,
+      480
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      },
+      "file_path": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id",
+      "file_path"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_brand_theme_favicon": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "delete_brand_theme_favicon",
+    "source_lines": [
+      491,
+      540
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "upload_brand_theme_background_image": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "upload_brand_theme_background_image",
+    "source_lines": [
+      551,
+      604
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      },
+      "file_path": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id",
+      "file_path"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_brand_theme_background_image": {
+    "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+    "source_function": "delete_brand_theme_background_image",
+    "source_lines": [
+      615,
+      666
+    ],
+    "properties": {
+      "brand_id": {
+        "type": "string"
+      },
+      "theme_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "brand_id",
+      "theme_id"
+    ],
+    "scopes": [
+      "okta.brands.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "brand_id",
+      "theme_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_device_assurance_policies": {
+    "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+    "source_function": "list_device_assurance_policies",
+    "source_lines": [
+      342,
+      494
+    ],
+    "properties": {
+      "version_threshold": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.deviceAssurance.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_device_assurance_policy": {
+    "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+    "source_function": "get_device_assurance_policy",
+    "source_lines": [
+      501,
+      564
+    ],
+    "properties": {
+      "device_assurance_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "device_assurance_id"
+    ],
+    "scopes": [
+      "okta.deviceAssurance.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "device_assurance_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "create_device_assurance_policy": {
+    "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+    "source_function": "create_device_assurance_policy",
+    "source_lines": [
+      571,
+      680
+    ],
+    "properties": {
+      "policy_data": {
+        "type": "object"
+      },
+      "user_stated_os_version": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "policy_data"
+    ],
+    "scopes": [
+      "okta.deviceAssurance.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "replace_device_assurance_policy": {
+    "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+    "source_function": "replace_device_assurance_policy",
+    "source_lines": [
+      688,
+      856
+    ],
+    "properties": {
+      "device_assurance_id": {
+        "type": "string"
+      },
+      "policy_data": {
+        "type": "object"
+      },
+      "user_stated_os_version": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "device_assurance_id",
+      "policy_data"
+    ],
+    "scopes": [
+      "okta.deviceAssurance.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "device_assurance_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "delete_device_assurance_policy": {
+    "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+    "source_function": "delete_device_assurance_policy",
+    "source_lines": [
+      863,
+      926
+    ],
+    "properties": {
+      "device_assurance_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "device_assurance_id"
+    ],
+    "scopes": [
+      "okta.deviceAssurance.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "device_assurance_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "list_groups": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "list_groups",
+    "source_lines": [
+      26,
+      124
+    ],
+    "properties": {
+      "search": {
+        "type": "string",
+        "default": ""
+      },
+      "filter": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.groups.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "get_group",
+    "source_lines": [
+      131,
+      169
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "group_id"
+    ],
+    "scopes": [
+      "okta.groups.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "create_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "create_group",
+    "source_lines": [
+      175,
+      217
+    ],
+    "properties": {
+      "profile": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "profile"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "delete_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "delete_group",
+    "source_lines": [
+      224,
+      281
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "group_id"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "confirm_delete_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "confirm_delete_group",
+    "source_lines": [
+      288,
+      329
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "confirmation": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "group_id",
+      "confirmation"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "update_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "update_group",
+    "source_lines": [
+      336,
+      377
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "profile": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "group_id",
+      "profile"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_group_users": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "list_group_users",
+    "source_lines": [
+      384,
+      475
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [
+      "group_id"
+    ],
+    "scopes": [
+      "okta.groups.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "list_group_apps": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "list_group_apps",
+    "source_lines": [
+      482,
+      555
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "group_id"
+    ],
+    "scopes": [
+      "okta.groups.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "group_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "add_user_to_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "add_user_to_group",
+    "source_lines": [
+      562,
+      607
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "group_id",
+      "user_id"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id",
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "remove_user_from_group": {
+    "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+    "source_function": "remove_user_from_group",
+    "source_lines": [
+      614,
+      645
+    ],
+    "properties": {
+      "group_id": {
+        "type": "string"
+      },
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "group_id",
+      "user_id"
+    ],
+    "scopes": [
+      "okta.groups.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "group_id",
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_policies": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "list_policies",
+    "source_lines": [
+      64,
+      155
+    ],
+    "properties": {
+      "type": {
+        "type": "string"
+      },
+      "status": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "type"
+    ],
+    "scopes": [
+      "okta.policies.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "get_policy",
+    "source_lines": [
+      162,
+      192
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id"
+    ],
+    "scopes": [
+      "okta.policies.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "create_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "create_policy",
+    "source_lines": [
+      198,
+      236
+    ],
+    "properties": {
+      "policy_data": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "policy_data"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "update_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "update_policy",
+    "source_lines": [
+      243,
+      274
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "policy_data": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "policy_id",
+      "policy_data"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "delete_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "delete_policy",
+    "source_lines": [
+      281,
+      320
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "activate_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "activate_policy",
+    "source_lines": [
+      327,
+      351
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "deactivate_policy": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "deactivate_policy",
+    "source_lines": [
+      358,
+      397
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "list_policy_rules": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "list_policy_rules",
+    "source_lines": [
+      404,
+      466
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      }
+    },
+    "required": [
+      "policy_id"
+    ],
+    "scopes": [
+      "okta.policies.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "get_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "get_policy_rule",
+    "source_lines": [
+      473,
+      504
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_id"
+    ],
+    "scopes": [
+      "okta.policies.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id",
+      "rule_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "create_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "create_policy_rule",
+    "source_lines": [
+      511,
+      548
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_data": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_data"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "update_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "update_policy_rule",
+    "source_lines": [
+      555,
+      590
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_id": {
+        "type": "string"
+      },
+      "rule_data": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_id",
+      "rule_data"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id",
+      "rule_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "delete_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "delete_policy_rule",
+    "source_lines": [
+      597,
+      637
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id",
+      "rule_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "activate_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "activate_policy_rule",
+    "source_lines": [
+      644,
+      669
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id",
+      "rule_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "deactivate_policy_rule": {
+    "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+    "source_function": "deactivate_policy_rule",
+    "source_lines": [
+      676,
+      714
+    ],
+    "properties": {
+      "policy_id": {
+        "type": "string"
+      },
+      "rule_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "policy_id",
+      "rule_id"
+    ],
+    "scopes": [
+      "okta.policies.manage"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [
+      "policy_id",
+      "rule_id"
+    ],
+    "id_error_envelope": "dict"
+  },
+  "get_login_failures": {
+    "source_file": "src/okta_mcp_server/tools/system_logs/login_failures.py",
+    "source_function": "get_login_failures",
+    "source_lines": [
+      128,
+      282
+    ],
+    "properties": {
+      "since": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "until": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "user_id": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.logs.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_logs": {
+    "source_file": "src/okta_mcp_server/tools/system_logs/system_logs.py",
+    "source_function": "get_logs",
+    "source_lines": [
+      41,
+      328
+    ],
+    "properties": {
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "since": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "until": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "filter": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.logs.read"
+    ],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "list_user_groups": {
+    "source_file": "src/okta_mcp_server/tools/user_resources/user_resources.py",
+    "source_function": "list_user_groups",
+    "source_lines": [
+      22,
+      60
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "user_id"
+    ],
+    "scopes": [
+      "okta.users.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "list_users": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "list_users",
+    "source_lines": [
+      31,
+      196
+    ],
+    "properties": {
+      "search": {
+        "type": "string",
+        "default": ""
+      },
+      "filter": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "fetch_all": {
+        "type": "boolean",
+        "default": false
+      },
+      "after": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "limit": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [
+      "okta.users.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_user_profile_attributes": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "get_user_profile_attributes",
+    "source_lines": [
+      202,
+      235
+    ],
+    "properties": {},
+    "required": [],
+    "scopes": [
+      "okta.users.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "get_user": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "get_user",
+    "source_lines": [
+      242,
+      280
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "user_id"
+    ],
+    "scopes": [
+      "okta.users.read"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "create_user": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "create_user",
+    "source_lines": [
+      286,
+      351
+    ],
+    "properties": {
+      "profile": {
+        "type": "object"
+      },
+      "activate": {
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "required": [
+      "profile"
+    ],
+    "scopes": [
+      "okta.users.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  },
+  "update_user": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "update_user",
+    "source_lines": [
+      358,
+      399
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      },
+      "profile": {
+        "type": "object"
+      }
+    },
+    "required": [
+      "user_id",
+      "profile"
+    ],
+    "scopes": [
+      "okta.users.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "deactivate_user": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "deactivate_user",
+    "source_lines": [
+      406,
+      449
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "user_id"
+    ],
+    "scopes": [
+      "okta.users.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "delete_deactivated_user": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "delete_deactivated_user",
+    "source_lines": [
+      456,
+      498
+    ],
+    "properties": {
+      "user_id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "user_id"
+    ],
+    "scopes": [
+      "okta.users.manage"
+    ],
+    "scope_error_envelope": "list",
+    "validated_ids": [
+      "user_id"
+    ],
+    "id_error_envelope": "list"
+  },
+  "export_users_csv": {
+    "source_file": "src/okta_mcp_server/tools/users/users.py",
+    "source_function": "export_users_csv",
+    "source_lines": [
+      503,
+      690
+    ],
+    "properties": {
+      "output_path": {
+        "type": "string",
+        "default": "/tmp/okta_users_export.csv"
+      },
+      "search": {
+        "type": "string",
+        "default": ""
+      },
+      "filter": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      },
+      "q": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null
+      }
+    },
+    "required": [],
+    "scopes": [],
+    "scope_error_envelope": "dict",
+    "validated_ids": [],
+    "id_error_envelope": "list"
+  }
+}
