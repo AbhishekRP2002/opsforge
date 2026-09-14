@@ -41,7 +41,7 @@ server = "itops_env.server.app:main"
 [tool.setuptools]
 include-package-data = true
 py-modules = ["opsforge_verifiers"]
-packages = ["itops_env", "itops_env.harness", "itops_env.integrations", "itops_env.integrations.verifiers", "itops_env.server", "itops_env.server.interfaces", "itops_env.server.mcp_servers", "itops_env.server.core", "itops_env.server.storage", "itops_env.server.services", "itops_env.resources", "itops_env.resources.development", "itops_env.server.storage.migrations"]
+packages = ["itops_env", "itops_env.harness", "itops_env.integrations", "itops_env.integrations.verifiers", "itops_env.server", "itops_env.server.interfaces", "itops_env.server.mcp_servers", "itops_env.server.mcp_servers.benchmark", "itops_env.server.mcp_servers.okta", "itops_env.server.mcp_servers.servicenow", "itops_env.server.mcp_servers.erpnext", "itops_env.server.mcp_servers.darwinbox", "itops_env.server.core", "itops_env.server.storage", "itops_env.server.services", "itops_env.resources", "itops_env.resources.development", "itops_env.server.storage.migrations"]
 package-dir = { "itops_env" = ".", "itops_env.server" = "server" }
 
 [tool.setuptools.package-data]
