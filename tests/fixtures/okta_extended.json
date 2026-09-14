@@ -1,0 +1,1783 @@
+{
+  "tool_count": 112,
+  "source": {
+    "commit": "1eb0c943069fe887b607acb5360d34478f8007f8"
+  },
+  "tools": {
+    "list_applications": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "list_applications",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_applications]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_applications]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_applications]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "get_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "get_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "create_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "create_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "update_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "update_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[update_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[update_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[update_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[update_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "delete_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "delete_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "Only initiates manual confirmation; mutation is exclusively confirm_delete_application.",
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "confirm_delete_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "confirm_delete_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[confirm_delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[confirm_delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[confirm_delete_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[confirm_delete_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "activate_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "activate_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[activate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[activate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[activate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[activate_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "deactivate_application": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "deactivate_application",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[deactivate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[deactivate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[deactivate_application]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[deactivate_application]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "list_catalog_apps": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "list_catalog_apps",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_catalog_apps]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_catalog_apps]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_catalog_apps]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "get_catalog_app": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "get_catalog_app",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_catalog_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_catalog_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_catalog_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_catalog_app]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "install_oin_app": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/applications/applications.py",
+      "source_function": "install_oin_app",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[install_oin_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[install_oin_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[install_oin_app]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[install_oin_app]",
+        "tests/domain/test_okta_applications.py::test_application_replacement_lifecycle_and_confirmation"
+      ],
+      "limitations": [
+        "App payloads are persisted inert JSON with label/signOnMode/settings checks, not an Okta SDK model or authentication integration.",
+        "Listing supports one equality filter and label substring q; expand is rejected. No soft-deleted records; include_non_deleted does not add records.",
+        "Finite OIN catalog contains bookmark only. Delete requires INACTIVE plus exact public DELETE confirmation."
+      ]
+    },
+    "list_brands": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "list_brands",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_brands]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_brands]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_brands]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "get_brand": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "get_brand",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_brand]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "create_brand": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "create_brand",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_brand]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "replace_brand": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "replace_brand",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_brand]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "delete_brand": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "delete_brand",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_brand]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_brand]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_brand]"
+      ],
+      "limitations": [
+        "Returns source confirmation_required; no mutation and no continuation tool in this selected surface.",
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "list_brand_domains": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/brands/brands.py",
+      "source_function": "list_brand_domains",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_brand_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_brand_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_brand_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_brand_domains]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Exact case-sensitive brand-name uniqueness; synthetic nondefault brands initialize one theme, page slots, and UserActivation template.",
+        "Default-app and email-domain references are checked against simulated records; runtime does not provision real brands."
+      ]
+    },
+    "list_custom_domains": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "list_custom_domains",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_custom_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_custom_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_custom_domains]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "create_custom_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "create_custom_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_custom_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "get_custom_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "get_custom_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_custom_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "replace_custom_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "replace_custom_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_custom_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "delete_custom_domain": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "delete_custom_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_custom_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_custom_domain]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "upsert_custom_domain_certificate": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "upsert_custom_domain_certificate",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[upsert_custom_domain_certificate]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[upsert_custom_domain_certificate]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[upsert_custom_domain_certificate]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[upsert_custom_domain_certificate]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "verify_custom_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_domains/custom_domains.py",
+      "source_function": "verify_custom_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[verify_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[verify_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[verify_custom_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[verify_custom_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Case-insensitive domain uniqueness; brand association is relational. Verification immediately becomes VERIFIED in simulated state, without DNS or certificate checks.",
+        "Certificates/private keys are inert data from episode artifacts only; no host reads. Public certificate digest excludes private key."
+      ]
+    },
+    "get_error_page_resources": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_error_page_resources",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_error_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_error_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_error_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_error_page_resources]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_customized_error_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_customized_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_customized_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "replace_customized_error_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "replace_customized_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_customized_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "delete_customized_error_page": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "delete_customized_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_customized_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_customized_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_customized_error_page]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_default_error_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_default_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_default_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_default_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_default_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_default_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_preview_error_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_preview_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_preview_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "replace_preview_error_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "replace_preview_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_preview_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "delete_preview_error_page": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "delete_preview_error_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_preview_error_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_preview_error_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_preview_error_page]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_sign_in_page_resources": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_sign_in_page_resources",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_sign_in_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_sign_in_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_sign_in_page_resources]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_sign_in_page_resources]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_customized_sign_in_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_customized_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_customized_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "replace_customized_sign_in_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "replace_customized_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_customized_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "delete_customized_sign_in_page": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "delete_customized_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_customized_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_customized_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_customized_sign_in_page]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_default_sign_in_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_default_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_default_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_default_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_default_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_default_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_preview_sign_in_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_preview_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_preview_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "replace_preview_sign_in_page": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "replace_preview_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_preview_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "delete_preview_sign_in_page": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "delete_preview_sign_in_page",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_preview_sign_in_page]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_preview_sign_in_page]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_preview_sign_in_page]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "list_sign_in_widget_versions": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "list_sign_in_widget_versions",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_sign_in_widget_versions]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_sign_in_widget_versions]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_sign_in_widget_versions]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_sign_in_widget_versions]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "get_sign_out_page_settings": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "get_sign_out_page_settings",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_sign_out_page_settings]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "replace_sign_out_page_settings": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_pages/custom_pages.py",
+      "source_function": "replace_sign_out_page_settings",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_sign_out_page_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_sign_out_page_settings]",
+        "tests/domain/test_okta_pages.py::test_signout_and_widget_versions"
+      ],
+      "limitations": [
+        "Default/customized/preview slots are separate inert JSON; there is no browser rendering, automatic publication, JavaScript/CSP execution or tenant-hosting simulation.",
+        "Fixture widget versions are '*' and '7'; stored widgetVersion is inert configuration, not a claim that a requested release is available."
+      ]
+    },
+    "list_email_templates": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "list_email_templates",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_email_templates]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_email_templates]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_email_templates]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_email_templates]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_template": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_template",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_template]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_template]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_template]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_template]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "list_email_customizations": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "list_email_customizations",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_email_customizations]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "create_email_customization": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "create_email_customization",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[create_email_customization]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_customization": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_customization",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_customization]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "replace_email_customization": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "replace_email_customization",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_email_customization]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "delete_email_customization": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "delete_email_customization",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_email_customization]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_email_customization]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_email_customization]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "delete_all_email_customizations": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "delete_all_email_customizations",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_all_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_all_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_all_email_customizations]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_all_email_customizations]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_all_email_customizations]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_customization_preview": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_customization_preview",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_customization_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_customization_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_customization_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_customization_preview]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_default_content": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_default_content",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_default_content]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_default_content]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_default_content]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_default_content]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_default_content_preview": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_default_content_preview",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_default_content_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_default_content_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_default_content_preview]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_default_content_preview]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "get_email_settings": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "get_email_settings",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_settings]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "replace_email_settings": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "replace_email_settings",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_email_settings]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_email_settings]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "send_test_email": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/custom_templates/custom_templates.py",
+      "source_function": "send_test_email",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[send_test_email]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[send_test_email]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[send_test_email]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[send_test_email]",
+        "tests/domain/test_okta_templates.py::test_email_customization_default_preview_settings_and_outbox"
+      ],
+      "limitations": [
+        "Only UserActivation/en defaults are seeded; new brands own this template. Custom languages use a finite BCP47 subset; one variant per language and one default.",
+        "Preview substitutes org.name and activationLink only; unknown placeholders remain literal. OAuth service auth rejects previews and sends.",
+        "send_test_email writes a transactional simulated outbox with rendered content; success means simulated request, never SMTP delivery."
+      ]
+    },
+    "list_email_domains": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "list_email_domains",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_email_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_email_domains]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_email_domains]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "create_email_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "create_email_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_email_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "get_email_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "get_email_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_email_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "replace_email_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "replace_email_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_email_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "delete_email_domain": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "delete_email_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_email_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_email_domain]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "verify_email_domain": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/email_domains/email_domains.py",
+      "source_function": "verify_email_domain",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[verify_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[verify_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[verify_email_domain]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[verify_email_domain]",
+        "tests/domain/test_okta_customization.py::test_brands_domains_email_references_and_headless_delete"
+      ],
+      "limitations": [
+        "Brand-owned simulated sender records; case-insensitive domain uniqueness. Verification immediately becomes VERIFIED without DNS or mail delivery."
+      ]
+    },
+    "list_brand_themes": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "list_brand_themes",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_brand_themes]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_brand_themes]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_brand_themes]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_brand_themes]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "get_brand_theme": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "get_brand_theme",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_brand_theme]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "replace_brand_theme": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "replace_brand_theme",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_brand_theme]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_brand_theme]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "upload_brand_theme_logo": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "upload_brand_theme_logo",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[upload_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[upload_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[upload_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[upload_brand_theme_logo]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "delete_brand_theme_logo": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "delete_brand_theme_logo",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_brand_theme_logo]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_brand_theme_logo]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_brand_theme_logo]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "upload_brand_theme_favicon": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "upload_brand_theme_favicon",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[upload_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[upload_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[upload_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[upload_brand_theme_favicon]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "delete_brand_theme_favicon": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "delete_brand_theme_favicon",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_brand_theme_favicon]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_brand_theme_favicon]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_brand_theme_favicon]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "upload_brand_theme_background_image": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "upload_brand_theme_background_image",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[upload_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[upload_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[upload_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[upload_brand_theme_background_image]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants"
+      ],
+      "limitations": [
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "delete_brand_theme_background_image": {
+      "status": "headless_confirmation_only",
+      "source_file": "src/okta_mcp_server/tools/customization/themes/themes.py",
+      "source_function": "delete_brand_theme_background_image",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_brand_theme_background_image]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_brand_theme_background_image]",
+        "tests/domain/test_okta_customization.py::test_theme_replacement_validates_variants",
+        "tests/domain/test_okta_extended_integrity.py::test_headless_confirmation_gates_do_not_mutate_any_business_state[delete_brand_theme_background_image]"
+      ],
+      "limitations": [
+        "Returns source success:false cancellation; no mutation. Interactive elicitation path is unavailable.",
+        "Brand ownership enforced; replacement retains uploaded assets. Images are inert MIME-labelled bytes, not decoded or dimension-validated.",
+        "Uploads read normalized episode artifacts, copy content-addressed SQLite bytes, and expose authenticated synthetic links; logo <100000 bytes, other images <1 MiB."
+      ]
+    },
+    "list_device_assurance_policies": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+      "source_function": "list_device_assurance_policies",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_device_assurance_policies]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_device_assurance_policies]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_device_assurance_policies]",
+        "tests/domain/test_okta_devices_logs.py::test_device_policy_version_guard_status_diff_and_delete"
+      ],
+      "limitations": [
+        "Finite five-platform configuration model, no device posture evaluator. Missing attribute state is not_configured and effective status UNKNOWN.",
+        "Top-level versions accept X.Y.Z or X.Y.Z.W; Android major-only is rejected by the actual source decorator call path. Unknown policy fields are rejected.",
+        "Replace reports before/after/differences. Source-opted headless delete is preauthorized simulation, not human consent."
+      ]
+    },
+    "get_device_assurance_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+      "source_function": "get_device_assurance_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_device_assurance_policy]",
+        "tests/domain/test_okta_devices_logs.py::test_device_policy_version_guard_status_diff_and_delete"
+      ],
+      "limitations": [
+        "Finite five-platform configuration model, no device posture evaluator. Missing attribute state is not_configured and effective status UNKNOWN.",
+        "Top-level versions accept X.Y.Z or X.Y.Z.W; Android major-only is rejected by the actual source decorator call path. Unknown policy fields are rejected.",
+        "Replace reports before/after/differences. Source-opted headless delete is preauthorized simulation, not human consent."
+      ]
+    },
+    "create_device_assurance_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+      "source_function": "create_device_assurance_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_device_assurance_policy]",
+        "tests/domain/test_okta_devices_logs.py::test_device_policy_version_guard_status_diff_and_delete"
+      ],
+      "limitations": [
+        "Finite five-platform configuration model, no device posture evaluator. Missing attribute state is not_configured and effective status UNKNOWN.",
+        "Top-level versions accept X.Y.Z or X.Y.Z.W; Android major-only is rejected by the actual source decorator call path. Unknown policy fields are rejected.",
+        "Replace reports before/after/differences. Source-opted headless delete is preauthorized simulation, not human consent."
+      ]
+    },
+    "replace_device_assurance_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+      "source_function": "replace_device_assurance_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[replace_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[replace_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[replace_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[replace_device_assurance_policy]",
+        "tests/domain/test_okta_devices_logs.py::test_device_policy_version_guard_status_diff_and_delete"
+      ],
+      "limitations": [
+        "Finite five-platform configuration model, no device posture evaluator. Missing attribute state is not_configured and effective status UNKNOWN.",
+        "Top-level versions accept X.Y.Z or X.Y.Z.W; Android major-only is rejected by the actual source decorator call path. Unknown policy fields are rejected.",
+        "Replace reports before/after/differences. Source-opted headless delete is preauthorized simulation, not human consent."
+      ]
+    },
+    "delete_device_assurance_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/device_assurance/device_assurance.py",
+      "source_function": "delete_device_assurance_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_device_assurance_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_device_assurance_policy]",
+        "tests/domain/test_okta_devices_logs.py::test_device_policy_version_guard_status_diff_and_delete"
+      ],
+      "limitations": [
+        "Finite five-platform configuration model, no device posture evaluator. Missing attribute state is not_configured and effective status UNKNOWN.",
+        "Top-level versions accept X.Y.Z or X.Y.Z.W; Android major-only is rejected by the actual source decorator call path. Unknown policy fields are rejected.",
+        "Replace reports before/after/differences. Source-opted headless delete is preauthorized simulation, not human consent."
+      ]
+    },
+    "list_groups": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "list_groups",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_groups]",
+        "tests/domain/test_okta_identity.py::test_all_identity_reads_lists_removal_apps_and_empty_export",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Supports one profile attribute eq expression and substring q."
+      ]
+    },
+    "get_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "get_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure",
+        "tests/integration/test_okta_identity_native.py::test_native_sdk_discovers_and_mutates_new_okta_identity_tool"
+      ],
+      "limitations": [
+        "Reads simulated relational group state."
+      ]
+    },
+    "create_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "create_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure",
+        "tests/integration/test_okta_identity_native.py::test_native_sdk_discovers_and_mutates_new_okta_identity_tool"
+      ],
+      "limitations": [
+        "Requires name and generates monotonic episode-local IDs."
+      ]
+    },
+    "delete_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "delete_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Always returns the headless two-call confirmation payload and does not mutate."
+      ]
+    },
+    "confirm_delete_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "confirm_delete_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[confirm_delete_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Requires exact DELETE but does not store a prior server-side request token, matching selected source behavior."
+      ]
+    },
+    "update_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "update_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[update_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Replaces the whole profile and requires name."
+      ]
+    },
+    "list_group_users": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "list_group_users",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_group_users]",
+        "tests/domain/test_okta_identity.py::test_all_identity_reads_lists_removal_apps_and_empty_export",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Lists fixture and simulated memberships in deterministic ID order."
+      ]
+    },
+    "list_group_apps": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "list_group_apps",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_group_apps]",
+        "tests/domain/test_okta_identity.py::test_all_identity_reads_lists_removal_apps_and_empty_export",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure",
+        "tests/domain/test_okta_applications.py::test_group_application_reads_follow_application_replacement"
+      ],
+      "limitations": [
+        "Group assignments read their actual application records; fixture assignments are preserved and subsequent application replacement is visible."
+      ]
+    },
+    "add_user_to_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "add_user_to_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[add_user_to_group]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Business-level duplicate assignment succeeds without another membership write."
+      ]
+    },
+    "remove_user_from_group": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/groups/groups.py",
+      "source_function": "remove_user_from_group",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[remove_user_from_group]",
+        "tests/domain/test_okta_identity.py::test_all_identity_reads_lists_removal_apps_and_empty_export",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Missing membership is a deliberate simulated business error."
+      ]
+    },
+    "list_policies": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "list_policies",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_policies]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_policies]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_policies]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "get_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "get_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "create_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "create_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "update_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "update_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[update_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[update_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[update_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[update_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "delete_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "delete_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "activate_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "activate_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[activate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[activate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[activate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[activate_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "deactivate_policy": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "deactivate_policy",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[deactivate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[deactivate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[deactivate_policy]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[deactivate_policy]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "list_policy_rules": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "list_policy_rules",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_policy_rules]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[list_policy_rules]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[list_policy_rules]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[list_policy_rules]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "get_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "get_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[get_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "create_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "create_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[create_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[create_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[create_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "update_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "update_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[update_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[update_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[update_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[update_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "delete_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "delete_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[delete_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[delete_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[delete_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "activate_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "activate_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[activate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[activate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[activate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[activate_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "deactivate_policy_rule": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/policies/policies.py",
+      "source_function": "deactivate_policy_rule",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[deactivate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[deactivate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[deactivate_policy_rule]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_id_guard_matches_source_envelope[deactivate_policy_rule]",
+        "tests/domain/test_okta_policies.py::test_policy_rule_parent_replacement_lifecycle_and_deletion"
+      ],
+      "limitations": [
+        "Finite policy/rule type and status model; parent rule types must match, policy type cannot change. Conditions/actions are inert stored JSON, not an authorization evaluator.",
+        "Policy deletion cascades rules. Source-opted headless delete/deactivate is preauthorized simulated execution, not human consent."
+      ]
+    },
+    "get_login_failures": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/system_logs/login_failures.py",
+      "source_function": "get_login_failures",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_login_failures]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_login_failures]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_login_failures]",
+        "tests/domain/test_okta_extended_fixtures.py::test_log_outcomes_are_classified_from_fixture_records"
+      ],
+      "limitations": [
+        "Logs combine validated fixture events with journal projections at a fixed epoch plus episode clock; no wall-time or external events.",
+        "Invocation journal entries always have UNKNOWN outcome because they precede execution; completed identity journal records have SUCCESS. Extended writes have invocation entries, not tenant event synthesis.",
+        "Supports equality on outcome.result, actor.id and eventType joined by ' and ', bounded timezone timestamps and substring q; other expressions error. FAILURE/DENY queries are separate buckets, capped at 5000 each."
+      ]
+    },
+    "get_logs": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/system_logs/system_logs.py",
+      "source_function": "get_logs",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_logs]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_success_profile[get_logs]",
+        "tests/domain/test_okta_extended_profiles.py::test_each_extended_tool_missing_scope_is_nonmutating[get_logs]",
+        "tests/domain/test_okta_extended_fixtures.py::test_log_outcomes_are_classified_from_fixture_records"
+      ],
+      "limitations": [
+        "Logs combine validated fixture events with journal projections at a fixed epoch plus episode clock; no wall-time or external events.",
+        "Invocation journal entries always have UNKNOWN outcome because they precede execution; completed identity journal records have SUCCESS. Extended writes have invocation entries, not tenant event synthesis.",
+        "Supports equality on outcome.result, actor.id and eventType joined by ' and ', bounded timezone timestamps and substring q; other expressions error. FAILURE/DENY queries are separate buckets, capped at 5000 each."
+      ]
+    },
+    "list_user_groups": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/user_resources/user_resources.py",
+      "source_function": "list_user_groups",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_user_groups]",
+        "tests/domain/test_okta_identity.py::test_groups_replacement_confirmation_membership_and_lists",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Returns the full simulated membership list without pagination."
+      ]
+    },
+    "list_users": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "list_users",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[list_users]",
+        "tests/domain/test_okta_identity.py::test_filter_cursor_and_scope_errors_are_explicit_and_deterministic",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Supports one eq expression and case-insensitive profile substring q; other expressions are rejected."
+      ]
+    },
+    "get_user_profile_attributes": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "get_user_profile_attributes",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_user_profile_attributes]",
+        "tests/domain/test_okta_identity.py::test_all_identity_reads_lists_removal_apps_and_empty_export",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Returns the first deterministic simulated profile mapping, not an SDK-internal schema."
+      ]
+    },
+    "get_user": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "get_user",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[get_user]",
+        "tests/domain/test_okta_identity.py::test_user_profile_lifecycle_and_business_idempotency",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Resolves fixture IDs and exact logins only."
+      ]
+    },
+    "create_user": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "create_user",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[create_user]",
+        "tests/domain/test_okta_identity.py::test_user_profile_lifecycle_and_business_idempotency",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "activate deterministically maps to ACTIVE or STAGED; tenant activation policy is not simulated."
+      ]
+    },
+    "update_user": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "update_user",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[update_user]",
+        "tests/domain/test_okta_identity.py::test_user_profile_lifecycle_and_business_idempotency",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Merges supplied profile fields over persisted simulated state."
+      ]
+    },
+    "deactivate_user": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "deactivate_user",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[deactivate_user]",
+        "tests/domain/test_okta_identity.py::test_user_profile_lifecycle_and_business_idempotency",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Models the documented headless immediate path; does not claim interactive consent."
+      ]
+    },
+    "delete_deactivated_user": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "delete_deactivated_user",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[delete_deactivated_user]",
+        "tests/domain/test_okta_identity.py::test_user_profile_lifecycle_and_business_idempotency",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Models the documented headless immediate path and requires DEPROVISIONED state."
+      ]
+    },
+    "export_users_csv": {
+      "status": "implemented",
+      "source_file": "src/okta_mcp_server/tools/users/users.py",
+      "source_function": "export_users_csv",
+      "tests": [
+        "tests/contract/test_okta_extended.py::test_each_okta_schema_matches_pinned_source[export_users_csv]",
+        "tests/integration/test_episode_artifacts.py::test_csv_is_transactional_episode_storage_and_controller_authenticated",
+        "tests/integration/test_episode_artifacts.py::test_csv_invocation_replay_is_single_step_and_reset_cleans_artifacts",
+        "tests/domain/test_okta_identity.py::test_every_identity_tool_has_a_modeled_failure"
+      ],
+      "limitations": [
+        "Logical safe /tmp filename maps to a controller-authenticated SQLite artifact capped at 1 MiB; no host write."
+      ]
+    }
+  }
+}

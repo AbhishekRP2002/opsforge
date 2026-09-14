@@ -1,0 +1,17 @@
+CREATE TABLE jira_projects (id TEXT PRIMARY KEY, key TEXT UNIQUE NOT NULL, data TEXT NOT NULL CHECK(json_valid(data)), next_number INTEGER NOT NULL DEFAULT 1);
+CREATE TABLE jira_users (id TEXT PRIMARY KEY, data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_issues (id INTEGER PRIMARY KEY AUTOINCREMENT, key TEXT UNIQUE NOT NULL, project_id TEXT NOT NULL REFERENCES jira_projects(id), parent_id INTEGER REFERENCES jira_issues(id) ON DELETE RESTRICT, data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_watchers (issue_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, user_id TEXT NOT NULL REFERENCES jira_users(id), PRIMARY KEY(issue_id,user_id));
+CREATE TABLE jira_request_issues (issue_id INTEGER PRIMARY KEY REFERENCES jira_issues(id) ON DELETE CASCADE);
+CREATE TABLE jira_comments (id INTEGER PRIMARY KEY AUTOINCREMENT, issue_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, author_id TEXT NOT NULL REFERENCES jira_users(id), data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_worklogs (id INTEGER PRIMARY KEY AUTOINCREMENT, issue_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, author_id TEXT NOT NULL REFERENCES jira_users(id), data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_estimates (issue_id INTEGER PRIMARY KEY REFERENCES jira_issues(id) ON DELETE CASCADE, original_seconds INTEGER, remaining_seconds INTEGER);
+CREATE TABLE jira_link_types (id TEXT PRIMARY KEY, data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_issue_links (id INTEGER PRIMARY KEY AUTOINCREMENT, type_id TEXT NOT NULL REFERENCES jira_link_types(id), inward_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, outward_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, CHECK(inward_id != outward_id));
+CREATE TABLE jira_remote_links (id INTEGER PRIMARY KEY AUTOINCREMENT, issue_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_transitions (id TEXT NOT NULL, project_id TEXT NOT NULL REFERENCES jira_projects(id), data TEXT NOT NULL CHECK(json_valid(data)), PRIMARY KEY(id,project_id));
+CREATE TABLE jira_status_history (id INTEGER PRIMARY KEY AUTOINCREMENT, issue_id INTEGER NOT NULL REFERENCES jira_issues(id) ON DELETE CASCADE, status TEXT NOT NULL CHECK(json_valid(status)), entered TEXT NOT NULL, exited TEXT, author_id TEXT REFERENCES jira_users(id), transition_id TEXT);
+CREATE TABLE jira_boards (id TEXT PRIMARY KEY, data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_board_projects (board_id TEXT NOT NULL REFERENCES jira_boards(id), project_id TEXT NOT NULL REFERENCES jira_projects(id), PRIMARY KEY(board_id,project_id));
+CREATE TABLE jira_sprints (id INTEGER PRIMARY KEY AUTOINCREMENT, board_id TEXT NOT NULL REFERENCES jira_boards(id), data TEXT NOT NULL CHECK(json_valid(data)));
+CREATE TABLE jira_sprint_issues (issue_id INTEGER PRIMARY KEY REFERENCES jira_issues(id) ON DELETE CASCADE, sprint_id INTEGER NOT NULL REFERENCES jira_sprints(id));

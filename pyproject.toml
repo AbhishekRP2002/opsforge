@@ -19,14 +19,18 @@ dependencies = [
     "starlette>=0.40",
     "uvicorn>=0.35",
     "jsonschema>=4.0",
-    "pydantic>=2.0",
+    "pydantic>=2.12",
 ]
 
 [project.optional-dependencies]
+verifiers = [
+    "verifiers==0.3.1; python_version < '3.14'",
+]
 dev = [
     "pyright",
     "pytest>=8.0.0",
     "ruff>=0.14.0",
+    "verifiers==0.3.1; python_version < '3.14'",
 ]
 
 [project.scripts]
@@ -36,7 +40,8 @@ server = "itops_env.server.app:main"
 
 [tool.setuptools]
 include-package-data = true
-packages = ["itops_env", "itops_env.harness", "itops_env.server", "itops_env.server.interfaces", "itops_env.server.mcp_servers", "itops_env.server.core", "itops_env.server.storage", "itops_env.server.services", "itops_env.resources", "itops_env.resources.development", "itops_env.server.storage.migrations"]
+py-modules = ["opsforge_verifiers"]
+packages = ["itops_env", "itops_env.harness", "itops_env.integrations", "itops_env.integrations.verifiers", "itops_env.server", "itops_env.server.interfaces", "itops_env.server.mcp_servers", "itops_env.server.mcp_servers.benchmark", "itops_env.server.mcp_servers.okta", "itops_env.server.mcp_servers.servicenow", "itops_env.server.mcp_servers.erpnext", "itops_env.server.mcp_servers.darwinbox", "itops_env.server.core", "itops_env.server.storage", "itops_env.server.services", "itops_env.resources", "itops_env.resources.development", "itops_env.server.storage.migrations"]
 package-dir = { "itops_env" = ".", "itops_env.server" = "server" }
 
 [tool.setuptools.package-data]
@@ -48,7 +53,7 @@ package-dir = { "itops_env" = ".", "itops_env.server" = "server" }
 editable_mode = "strict"
 
 [tool.pyright]
-include = ["*.py", "harness", "server", "resources", "examples", "tests"]
+include = ["*.py", "harness", "integrations", "server", "resources", "examples", "tests"]
 exclude = [".venv", "build", "dist"]
 pythonVersion = "3.11"
 typeCheckingMode = "standard"

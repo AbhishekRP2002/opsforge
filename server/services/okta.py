@@ -3,9 +3,14 @@
 import re
 
 from ..storage.database import Database
+from .okta_identity import _profile, _scope
 
 
 def get_user(db: Database, arguments: dict, step: int, clock: int) -> tuple[list, bool]:
+    if denied := _scope(db, "okta.users.read", listed=True):
+        value, is_error = denied
+        assert isinstance(value, list)
+        return value, is_error
     identifier = arguments["user_id"]
     if (
         not identifier
@@ -29,10 +34,7 @@ def get_user(db: Database, arguments: dict, step: int, clock: int) -> tuple[list
             "id": row["id"],
             "status": row["status"],
             "profile": {
-                "login": row["login"],
-                "email": row["email"],
-                "firstName": row["first_name"],
-                "lastName": row["last_name"],
+                **_profile(row),
             },
         }
     ], False

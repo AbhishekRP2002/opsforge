@@ -3,6 +3,20 @@
 from fastmcp import FastMCP
 from fastmcp.tools import ToolResult
 
+from . import (
+    agile,
+    catalog,
+    changes,
+    changesets,
+    incidents,
+    knowledge,
+    optimization,
+    scripts,
+    users,
+    variables,
+    workflows,
+)
+
 
 def register_tools(mcp: FastMCP, dispatch):
     @mcp.tool
@@ -34,4 +48,18 @@ def register_tools(mcp: FastMCP, dispatch):
             "add_group_members", {"group_id": group_id, "members": members}
         )
 
-    return (get_user, add_group_members)
+    return (
+        get_user,
+        add_group_members,
+        *incidents.register_tools(mcp, dispatch),
+        *users.register_tools(mcp, dispatch),
+        *scripts.register_tools(mcp, dispatch),
+        *changesets.register_tools(mcp, dispatch),
+        *workflows.register_tools(mcp, dispatch),
+        *changes.register_tools(mcp, dispatch),
+        *agile.register_tools(mcp, dispatch),
+        *knowledge.register_tools(mcp, dispatch),
+        *catalog.register_tools(mcp, dispatch),
+        *variables.register_tools(mcp, dispatch),
+        *optimization.register_tools(mcp, dispatch),
+    )

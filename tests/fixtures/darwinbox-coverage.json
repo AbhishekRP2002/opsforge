@@ -1,0 +1,211 @@
+{
+  "tools": [
+    {
+      "tool": "get_employee_details",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "update_employee",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_employee_validation_and_batch_atomicity",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_employee_history",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "download_personal_docs",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_personal_document_roundtrip_and_reset",
+      "failure_test": "tests/domain/test_darwinbox.py::test_personal_document_roundtrip_and_reset",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_position_master",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_forms_data",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_separation_details",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "add_employee",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_employee_validation_and_batch_atomicity",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "deactivate_employee",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_employee_lifecycle_and_history",
+      "failure_test": "tests/domain/test_darwinbox.py::test_employee_validation_and_batch_atomicity",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "upload_profile_attachments",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_personal_document_roundtrip_and_reset",
+      "failure_test": "tests/domain/test_darwinbox.py::test_personal_document_roundtrip_and_reset",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_monthly_attendance",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_attendance_dedup_order_conflicts_and_backdated",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "record_attendance_punches",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_attendance_dedup_order_conflicts_and_backdated",
+      "failure_test": "tests/domain/test_darwinbox.py::test_attendance_dedup_order_conflicts_and_backdated",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_daily_attendance",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_attendance_dedup_order_conflicts_and_backdated",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_attendance_roster",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "record_backdated_attendance",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_attendance_dedup_order_conflicts_and_backdated",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "approve_leave",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_leave_approval_rejection_revocation_and_balance",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_leave_action_history",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_leave_approval_rejection_revocation_and_balance",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_holiday_list",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "apply_leave",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_leave_approval_rejection_revocation_and_balance",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_leave_balance",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox.py::test_leave_approval_rejection_revocation_and_balance",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_job_listings",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_job_detail",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    },
+    {
+      "tool": "get_bulk_candidates",
+      "implemented": true,
+      "revision": "9c586d53c8ae1c5449a1a55ea1b57ae011152970",
+      "source_path": "src/index.ts",
+      "success_test": "tests/domain/test_darwinbox_fixtures.py::test_nonempty_master_and_recruitment_filters",
+      "failure_test": "tests/domain/test_darwinbox.py::test_invalid_tools_are_deliberate_errors",
+      "limitations": "Offline finite simulator; untyped vendor response shapes are UNCONFIRMED. Typed recruitment records and leave-balance fields retained; explicit fixture allocations and calendar-day leave; only owned base64 attachments, no tenant network or host access."
+    }
+  ]
+}

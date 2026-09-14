@@ -1,0 +1,1147 @@
+{
+  "tools": [
+    {
+      "tool": "erpnext_account_list",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[account_list-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_journal_entry_list",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[journal_entry_list-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_journal_entry_get",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[journal_entry_get-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_payment_entry_list",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[payment_entry_list-args5]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_payment_entry_get",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[payment_entry_get-args4]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_journal_entry_create",
+      "source_path": "src/tools/accounting.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_chart",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[stock_chart]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[stock_chart-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_chart",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[sales_chart]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[sales_chart-args1]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_revenue_trend",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[revenue_trend]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[revenue_trend-args8]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_order_breakdown",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[order_breakdown]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[order_breakdown-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_revenue_vs_orders",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[revenue_vs_orders]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[revenue_vs_orders-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_treemap",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[stock_treemap]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[stock_treemap-args4]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_product_radar",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[product_radar]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[product_radar-args10]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_price_vs_qty",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[price_vs_qty]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[price_vs_qty-args5]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kpi_revenue",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_revenue]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_revenue]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kpi_outstanding",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_outstanding]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_outstanding]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kpi_orders",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_orders]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_orders]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kpi_gross_margin",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_gross_margin]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_gross_margin]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kpi_overdue",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_overdue]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_total_kpis_empty_world_and_shared_terminal_gate[kpi_overdue]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_funnel",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[sales_funnel]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[sales_funnel-args11]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_ar_aging",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[ar_aging]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[ar_aging-args6]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_gross_profit",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[gross_profit]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[gross_profit-args7]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_profit_loss",
+      "source_path": "src/tools/analytics.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_charts_empty_world_returns_source_envelope[profit_loss]",
+      "failure_test": "tests/domain/test_erpnext_analytics.py::test_analytics_deliberate_invalid_inputs[profit_loss-args9]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_list",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_get",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_create",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[asset_create-args5]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_movement_list",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_movement]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_movement]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_movement_get",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset_movement]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset_movement]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_maintenance_list",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_maintenance]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_maintenance]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_maintenance_get",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset_maintenance]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[asset_maintenance]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_asset_category_list",
+      "source_path": "src/tools/assets.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_category]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[asset_category]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_lead_list",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[lead]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[lead]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_lead_get",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[lead]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[lead]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_lead_create",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[lead_create-args4]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_opportunity_list",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[opportunity]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[opportunity]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_opportunity_get",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[opportunity]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[opportunity]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_contact_list",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[contact]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[contact]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_contact_get",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[contact]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[contact]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_campaign_list",
+      "source_path": "src/tools/crm.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[campaign]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[campaign]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_delivery_note_list",
+      "source_path": "src/tools/delivery.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[delivery_note]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[delivery_note]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_delivery_note_get",
+      "source_path": "src/tools/delivery.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[delivery_note]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[delivery_note]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_delivery_note_create",
+      "source_path": "src/tools/delivery.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[delivery_note_create-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_shipment_list",
+      "source_path": "src/tools/delivery.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[shipment]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[shipment]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_shipment_get",
+      "source_path": "src/tools/delivery.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[shipment]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[shipment]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_employee_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[employee_list-args7]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_employee_get",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[employee_get-args6]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_attendance_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[attendance_list-args8]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_leave_application_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[leave_application_list-args10]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_leave_application_get",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[leave_application_get-args9]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_leave_application_create",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[leave_application_create-args11]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_salary_slip_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[salary_slip_list-args13]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_salary_slip_get",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[salary_slip_get-args12]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_payroll_entry_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[payroll_entry_list-args14]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_expense_claim_list",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[expense_claim_list-args15]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_expense_claim_create",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[expense_claim_create-args16]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_leave_balance",
+      "source_path": "src/tools/hr.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_accounting_hr.py::test_accounting_hr_deliberate_errors[leave_balance-args17]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_item_list",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[item_list-args7]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_item_get",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[item_get-args6]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_item_create",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_order_analytics_include_drafts_exclude_cancelled_and_compare_months",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[item_create-args4]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_item_update",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[item_update-args5]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_balance",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_receipt_delivery_reversals_and_asset_ids_are_enforced",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[stock_balance-args11]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_warehouse_list",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[warehouse_list-args12]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_entry_list",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[stock_entry_list-args10]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_entry_get",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[stock_entry_get-args9]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_stock_entry_create",
+      "source_path": "src/tools/inventory.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[stock_entry_create-args8]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kanban_get_board",
+      "source_path": "src/tools/kanban.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_kanban.py::test_kanban_transition_and_stale_rejection[Task-working-Working]",
+      "failure_test": "tests/domain/test_erpnext_kanban.py::test_kanban_transition_and_stale_rejection[Task-working-Working]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_kanban_move_card",
+      "source_path": "src/tools/kanban.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_kanban.py::test_kanban_transition_and_stale_rejection[Task-working-Working]",
+      "failure_test": "tests/domain/test_erpnext_kanban.py::test_kanban_transition_and_stale_rejection[Task-working-Working]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_bom_list",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[bom]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[bom]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_bom_get",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[bom]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[bom]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_work_order_list",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[work_order]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[work_order]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_work_order_get",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[work_order]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[work_order]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_work_order_create",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[work_order_create-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_job_card_list",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[job_card]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[job_card]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_job_card_get",
+      "source_path": "src/tools/manufacturing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[job_card]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[job_card]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_file_list",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_file_bytes_parent_privacy_replay_and_generic_bypass",
+      "failure_test": "tests/domain/test_erpnext_integrity.py::test_file_list_missing_parent_is_a_deliberate_error",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_file_download",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_file_bytes_parent_privacy_replay_and_generic_bypass",
+      "failure_test": "tests/domain/test_erpnext_integrity.py::test_attachment_unexpected_failure_rolls_back_ids_bytes_and_accounting",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_file_upload",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_integrity.py::test_safe_unicode_filename_has_retrievable_opaque_artifact_path",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_file_invalid_inputs_do_not_store_bytes[changes0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_create",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_balanced_journal_and_payment_party_resolution",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_operations_deliberate_errors[doc_create-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_update",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_receipt_delivery_reversals_and_asset_ids_are_enforced",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_delete",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_generic_documents_share_updates_filters_and_nonreused_identity",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_operations_deliberate_errors[doc_delete-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_submit",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_accounting_hr.py::test_hr_records_leave_allocation_and_expense_total",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[doc_submit-args26]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_cancel",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_analytics.py::test_order_analytics_include_drafts_exclude_cancelled_and_compare_months",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[doc_cancel-args27]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_get",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_integrity.py::test_typed_fixture_epoch_reference_validation_and_usage",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_operations_deliberate_errors[doc_get-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_list",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_integrity.py::test_modelled_assignment_failure_preserves_field_update",
+      "failure_test": "tests/domain/test_erpnext_integrity.py::test_numeric_order_and_filter_validation_in_empty_world",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_assign",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[doc_assign-args9]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_doc_unassign",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[doc_unassign-args10]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_method_call",
+      "source_path": "src/tools/operations.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_operations_deliberate_errors[method_call-args7]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_project_list",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[project_list-args1]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_project_get",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[project_get-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_task_list",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[task_list-args5]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_task_create",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[task_create-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_task_get",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_integrity.py::test_modelled_assignment_failure_preserves_field_update",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[task_get-args4]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_task_update",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_integrity.py::test_modelled_assignment_failure_preserves_field_update",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_timesheet_list",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[timesheet_list-args8]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_timesheet_get",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[timesheet_get-args7]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_project_create",
+      "source_path": "src/tools/project.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_projects.py::test_project_task_assignment_and_timesheet_share_documents",
+      "failure_test": "tests/domain/test_erpnext_projects.py::test_project_family_deliberate_failures[project_create-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_supplier_list",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[supplier]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_supplier_get",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_supplier_create",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[supplier_create-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_order_list",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_order]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_order]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_order_get",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_order]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_order]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_order_create",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[supplier]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_create_failures[purchase_order_create-args1]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_invoice_list",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_invoice]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_invoice]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_invoice_get",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_invoice]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_invoice]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_receipt_list",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_receipt]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[purchase_receipt]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_purchase_receipt_get",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_receipt]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_get_reads_generic_and_specialized_documents[purchase_receipt]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_supplier_quotation_list",
+      "source_path": "src/tools/purchasing.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[supplier_quotation]",
+      "failure_test": "tests/domain/test_erpnext_business_records.py::test_business_lists_read_real_records[supplier_quotation]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_customer_list",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[customer_list-args3]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_customer_get",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_integrity.py::test_nested_wrong_type_is_deliberate_business_error[transaction_date-value0]",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[customer_get-args2]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_customer_create",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[customer_create-args0]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_customer_update",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[customer_update-args1]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_list",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_order_list-args18]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_get",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_order_get-args17]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_create",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_order_create-args13]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_update",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_order_update-args14]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_submit",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_order_cancel",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_totals_lifecycle_reserves_and_cancel_releases_stock",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_invoice_list",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_invoice_list-args22]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_invoice_get",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_invoice_get-args21]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_invoice_create",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_invoice_create-args19]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_sales_invoice_submit",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[sales_invoice_submit-args20]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_quotation_list",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[quotation_list-args25]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_quotation_get",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[quotation_get-args24]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_quotation_create",
+      "source_path": "src/tools/sales.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_sales_inventory.py::test_invoice_quotation_and_master_updates",
+      "failure_test": "tests/domain/test_erpnext_sales_inventory.py::test_sales_inventory_deliberate_errors[quotation_create-args23]",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_user_list",
+      "source_path": "src/tools/setup.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_company_list",
+      "source_path": "src/tools/setup.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    },
+    {
+      "tool": "erpnext_company_create",
+      "source_path": "src/tools/setup.ts",
+      "revision": "ea6b2959ba0dcfda49494a197f0e2acc4f29a512",
+      "implemented": true,
+      "success_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "failure_test": "tests/domain/test_erpnext_operations.py::test_setup_and_allowed_method_read_mutated_state",
+      "limitations": "Finite episode-local DocTypes and validations; see the success and failure tests referenced in this test-only coverage fixture. No external Frappe server or permissions engine."
+    }
+  ]
+}

@@ -9,8 +9,8 @@ from uuid import uuid4
 
 from itops_env.models import ItopsAction, ItopsObservation, ItopsState
 
-from ..mcp_servers.tools import argument_error
-from ..services import okta, servicenow
+from ..mcp_servers.tools import argument_error, normalized_arguments, tool_handler
+from ..services.results import ServiceContent
 from ..storage.database import Database
 from .events import advance
 from .grading import EpisodeResult, ResultMetrics, grade
@@ -20,7 +20,9 @@ from .tracing import TraceStore, call_context, record_failure
 
 def response(value, *, error=False, provider=None, done=False, reward=0.0):
     return ItopsObservation(
-        content=[
+        content=value.blocks()
+        if isinstance(value, ServiceContent)
+        else [
             {
                 "type": "text",
                 "text": json.dumps(
@@ -275,6 +277,10 @@ class Episode:
                 if self._result is None:
                     self._infrastructure_failure(exception)
                 raise
+            except BaseException:
+                self._state = before
+                self._result = previous_result
+                raise
 
     def _transition(
         self, action: ItopsAction, conflict: bool
@@ -283,11 +289,12 @@ class Episode:
         if not error:
             error = argument_error(action.provider, action.tool_name, action.arguments)
         key = f"{action.provider}.{action.tool_name}"
-        duration = self.scenario.costs.get(key, self.scenario.costs["invalid"])
         if error:
             duration = self.scenario.costs["invalid"]
         elif key == "benchmark.workflow_wait":
             duration = action.arguments["seconds"]
+        else:
+            duration = self.scenario.costs.get(key, self.scenario.default_tool_cost)
         self._state.step_count += 1
         self._state.remaining_budget -= 1
         end = self._state.simulated_clock + duration
@@ -318,14 +325,12 @@ class Episode:
                 }
             )
         else:
-            service = {
-                "okta.get_user": okta.get_user,
-                "servicenow.get_user": servicenow.get_user,
-                "servicenow.add_group_members": servicenow.add_group_members,
-            }[key]
+            service = tool_handler(action.provider, action.tool_name)
             value, is_error = service(
                 self.db,
-                action.arguments,
+                normalized_arguments(
+                    action.provider, action.tool_name, action.arguments
+                ),
                 self._state.step_count,
                 self._state.simulated_clock,
             )
