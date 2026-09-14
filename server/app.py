@@ -12,6 +12,7 @@ from .interfaces.control import ControllerAuth, EpisodeBinding, register_control
 from .interfaces.mcp_bridge import DuplicateRequestGuard
 from .itops_environment import ItopsEnvironment
 from .mcp_servers.providers import bind_native_lifecycle, provider_app
+from .mcp_servers.tools import REGISTRARS, validate_registry
 
 
 class OwnedHTTPEnvServer(HTTPEnvServer):
@@ -39,6 +40,7 @@ class OwnedHTTPEnvServer(HTTPEnvServer):
 
 
 def create_opsforge_app(controller_token: str | None = None) -> FastAPI:
+    validate_registry()
     token = (
         controller_token
         if controller_token is not None
@@ -68,7 +70,7 @@ def create_opsforge_app(controller_token: str | None = None) -> FastAPI:
         return {"status": "healthy"}
 
     children = []
-    for provider in ("okta", "servicenow", "benchmark"):
+    for provider in REGISTRARS:
         child = provider_app(binding, provider)
         children.append(child)
         application.mount(

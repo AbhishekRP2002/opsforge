@@ -1,6 +1,7 @@
 """App-scoped episode ownership and controller-only HTTP operations."""
 
 import asyncio
+import re
 import secrets
 from concurrent.futures import Future
 from pathlib import Path
@@ -13,6 +14,7 @@ from starlette.datastructures import Headers
 from starlette.responses import JSONResponse
 
 from ..core.tracing import TraceStore
+from ..mcp_servers.tools import REGISTRARS
 
 if TYPE_CHECKING:
     from mcp.server.streamable_http import StreamableHTTPServerTransport
@@ -124,6 +126,29 @@ class ControllerAuth:
 
 
 def register_control(app: FastAPI, binding: EpisodeBinding):
+    @app.get("/control/artifacts/{artifact_path:path}")
+    def artifact(artifact_path: str):
+        if (
+            not artifact_path
+            or ("/" in artifact_path and not artifact_path.startswith("artifacts/"))
+            or "\\" in artifact_path
+            or ".." in artifact_path
+            or not re.fullmatch(r"[a-zA-Z0-9_.\-/]+", artifact_path)
+            or any(part in {"", ".", ".."} for part in artifact_path.split("/"))
+        ):
+            raise HTTPException(404, "Artifact not found")
+        with binding.lock:
+            row = binding.require().db.artifact(artifact_path)
+            if row is None:
+                raise HTTPException(404, "Artifact not found")
+            return Response(
+                bytes(row["content"]),
+                media_type=row["media_type"],
+                headers={
+                    "Content-Disposition": f'attachment; filename="{artifact_path.rsplit("/", 1)[-1]}"'
+                },
+            )
+
     @app.get("/control/session")
     def session(request: Request):
         with binding.lock:
@@ -138,7 +163,7 @@ def register_control(app: FastAPI, binding: EpisodeBinding):
                         "url": f"{base}/mcp/{provider}/",
                         "headers": {"Authorization": f"Bearer {binding.capability}"},
                     }
-                    for provider in ("okta", "servicenow", "benchmark")
+                    for provider in REGISTRARS
                 },
             }
 

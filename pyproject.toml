@@ -19,7 +19,7 @@ dependencies = [
     "starlette>=0.40",
     "uvicorn>=0.35",
     "jsonschema>=4.0",
-    "pydantic>=2.0",
+    "pydantic>=2.12",
 ]
 
 [project.optional-dependencies]

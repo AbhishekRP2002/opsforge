@@ -10,11 +10,11 @@ from fastmcp.exceptions import ToolError
 from fastmcp.server.dependencies import get_access_token, get_context
 from fastmcp.tools import ToolResult
 from itops_env.models import ItopsAction
-from mcp.types import TextContent
 from starlette.datastructures import Headers
 from starlette.responses import JSONResponse
 
 from ..core.tracing import call_context, record_failure
+from ..services.results import CONTENT_BLOCK
 
 raw_arguments: ContextVar[dict | None] = ContextVar("raw_tool_arguments", default=None)
 
@@ -68,7 +68,7 @@ async def dispatch_native(binding, provider, name, arguments):
             call_context.reset(trace_context)
         return ToolResult(
             content=[
-                TextContent.model_validate(block) for block in observation.content
+                CONTENT_BLOCK.validate_python(block) for block in observation.content
             ],
             structured_content=observation.structured_content,
             is_error=observation.is_error,
