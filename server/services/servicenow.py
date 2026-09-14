@@ -27,6 +27,9 @@ def get_user(db: Database, arguments: dict, step: int, clock: int) -> tuple[dict
         return {"success": False, "message": "User not found"}, False
     db.record(step, clock, "read", "servicenow", row["sys_id"])
     user = dict(row)
+    from .servicenow_users import profile
+
+    user.update(profile(db, "sys_user", row["sys_id"]))
     user["active"] = "true" if user["active"] else "false"
     return {"success": True, "message": "User found", "user": user}, False
 
@@ -57,10 +60,9 @@ def add_group_members(
         if user_exists is None or group_exists is None:
             failed.append(member)
             continue
-        number = db.connection.execute(
-            "SELECT count(*) + 1 FROM servicenow_memberships"
-        ).fetchone()[0]
-        membership_id = f"{number:032x}"
+        from .servicenow_store import identifier
+
+        membership_id = identifier(db, "sys_user_grmember")
         db.connection.execute(
             "INSERT INTO servicenow_memberships VALUES (?, ?, ?)",
             (membership_id, user_id, group_id),

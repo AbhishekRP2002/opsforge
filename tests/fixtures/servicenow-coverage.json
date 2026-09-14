@@ -1,0 +1,578 @@
+{
+  "tools": [
+    {
+      "name": "activate_workflow",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[activate_workflow-args2]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "add_change_task",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[add_change_task-args4]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "add_comment",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[add_comment-args2]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "add_file_to_changeset",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[add_file_to_changeset-args5]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "add_group_members",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_membership_ids_are_monotonic_after_first_record_removed",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[add_group_members-args7]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "add_workflow_activity",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[add_workflow_activity-args8]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "approve_change",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[approve_change-args6]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "commit_changeset",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[commit_changeset-args3]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "create_article",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[create_article-args4]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "create_catalog_category",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[create_catalog_category-args0]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "create_catalog_item_variable",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_variables_mapping_projection_and_zero_updates",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[create_catalog_item_variable-args7]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "create_category",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[create_category-args2]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "create_change_request",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[create_change_request-args0]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "create_changeset",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[create_changeset-args0]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "create_epic",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[create_epic-args3]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "create_group",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[create_group-args4]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "create_incident",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[create_incident-args0]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "create_knowledge_base",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[create_knowledge_base-args0]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "create_project",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[create_project-args0]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "create_script_include",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_script_include_opaque_roundtrip_name_and_prefixed_id",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_script_include_business_failures[create_script_include-args0]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "create_scrum_task",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[create_scrum_task-args12]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "create_story",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[create_story-args6]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "create_story_dependency",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[create_story_dependency-args9]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "create_user",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[create_user-args0]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "create_workflow",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[create_workflow-args0]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "deactivate_workflow",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[deactivate_workflow-args3]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "delete_script_include",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_script_include_opaque_roundtrip_name_and_prefixed_id",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_script_include_business_failures[delete_script_include-args3]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "delete_story_dependency",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[delete_story_dependency-args10]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "delete_workflow_activity",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[delete_workflow_activity-args10]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "get_article",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[get_article-args7]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "get_catalog_item",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[get_catalog_item-args4]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "get_change_request_details",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[get_change_request_details-args3]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "get_changeset_details",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[get_changeset_details-args2]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "get_incident_by_number",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[get_incident_by_number-args4]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "get_optimization_recommendations",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_optimization_exact_quality_name_and_seeded_synthetic_ranges",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[get_optimization_recommendations-args10]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "get_script_include",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_script_include_opaque_roundtrip_name_and_prefixed_id",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_script_include_business_failures[get_script_include-args1]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "get_user",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[get_user-args2]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "get_workflow_activities",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[get_workflow_activities-args7]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "get_workflow_details",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[get_workflow_details-args4]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "list_articles",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[list_articles-args8]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "list_catalog_categories",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[list_catalog_categories-args2]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "list_catalog_item_variables",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_variables_mapping_projection_and_zero_updates",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[list_catalog_item_variables-args9]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "list_catalog_items",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[list_catalog_items-args3]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "list_categories",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[list_categories-args3]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "list_change_requests",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[list_change_requests-args2]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "list_changesets",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[list_changesets-args6]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "list_epics",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[list_epics-args5]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "list_groups",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[list_groups-args6]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "list_incidents",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[list_incidents-args5]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "list_knowledge_bases",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[list_knowledge_bases-args1]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "list_projects",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[list_projects-args2]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "list_script_includes",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_script_include_opaque_roundtrip_name_and_prefixed_id",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_script_include_business_failures[list_script_includes-args4]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "list_scrum_tasks",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[list_scrum_tasks-args14]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "list_stories",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[list_stories-args8]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "list_story_dependencies",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[list_story_dependencies-args11]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "list_users",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[list_users-args3]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "list_workflow_versions",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[list_workflow_versions-args6]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "list_workflows",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[list_workflows-args5]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "move_catalog_items",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[move_catalog_items-args6]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "publish_article",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[publish_article-args6]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "publish_changeset",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[publish_changeset-args4]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "reject_change",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[reject_change-args7]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "remove_group_members",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_membership_ids_are_monotonic_after_first_record_removed",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[remove_group_members-args8]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "reorder_workflow_activities",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[reorder_workflow_activities-args11]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "resolve_incident",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[resolve_incident-args3]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "submit_change_for_approval",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[submit_change_for_approval-args5]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "update_article",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_category_article_mapping_and_publish_round_trip",
+      "failure_test": "tests/domain/test_servicenow_knowledge.py::test_knowledge_business_failures[update_article-args5]",
+      "limitations": "Pinned category/article mappings and precedence retained. Opaque article text; no workflow engine. Display labels resolved from stored reference records. Built-in workflow selector strings are stored verbatim."
+    },
+    {
+      "name": "update_catalog_category",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[update_catalog_category-args1]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "update_catalog_item",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_categories_items_and_partial_move_roundtrip",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[update_catalog_item-args5]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "update_catalog_item_variable",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_catalog.py::test_catalog_variables_mapping_projection_and_zero_updates",
+      "failure_test": "tests/domain/test_servicenow_catalog.py::test_catalog_business_failures[update_catalog_item_variable-args8]",
+      "limitations": "Catalog active=false removes active filter. Move can succeed partially. Variable qualifiers inert. Optimization usage/abandonment/fulfillment metrics are seeded synthetic source examples, never measurements."
+    },
+    {
+      "name": "update_change_request",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_changes.py::test_changes_tasks_and_first_approval_state_transitions",
+      "failure_test": "tests/domain/test_servicenow_changes.py::test_change_business_failures[update_change_request-args1]",
+      "limitations": "Source-coded states assess/implement/canceled; approver_id ignored and first stored approval selected. Explicit denied secondary operations retain earlier effects; no tenant approval rules."
+    },
+    {
+      "name": "update_changeset",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_changesets_opaque_files_publish_without_invented_precursor",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_changeset_business_failures[update_changeset-args1]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "update_epic",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[update_epic-args4]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "update_group",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[update_group-args5]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "update_incident",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_incidents.py::test_incident_mutations_resolve_number_and_preserve_source_mapping",
+      "failure_test": "tests/domain/test_servicenow_incidents.py::test_incident_business_failures_keep_mcp_success[update_incident-args1]",
+      "limitations": "Free-text query over short_description/description; assigned references are exact stored IDs; simulated UTC replaces resolved_at=now; tenant-generated defaults are not invented."
+    },
+    {
+      "name": "update_project",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[update_project-args1]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "update_script_include",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_opaque.py::test_script_include_opaque_roundtrip_name_and_prefixed_id",
+      "failure_test": "tests/domain/test_servicenow_opaque.py::test_script_include_business_failures[update_script_include-args2]",
+      "limitations": "Scripts and changeset files are opaque, capped at 1 MiB. Script lookup uses sys_id: prefix or exact name. Update sets can publish without commit; scope/developer references require fixture IDs."
+    },
+    {
+      "name": "update_scrum_task",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[update_scrum_task-args13]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "update_story",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_agile.py::test_agile_relationships_roundtrip_and_source_ignored_zero_fields",
+      "failure_test": "tests/domain/test_servicenow_agile.py::test_agile_business_failures[update_story-args7]",
+      "limitations": "Exact stored references, source optional zero omission and ignored epic state. Page total equals returned count; no tenant state-choice enums or scheduling engine."
+    },
+    {
+      "name": "update_user",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_users.py::test_users_groups_round_trip_and_secondary_partial_members",
+      "failure_test": "tests/domain/test_servicenow_users.py::test_user_group_failures_are_business_results[update_user-args1]",
+      "limitations": "Legacy selectors and sys_id: membership bug retained. Profile extras stored separately. Username/email/name uniqueness and reference guards are simulator rules; unknown roles skipped as source does."
+    },
+    {
+      "name": "update_workflow",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_lifecycle_attributes_and_real_totals",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[update_workflow-args1]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    },
+    {
+      "name": "update_workflow_activity",
+      "status": "implemented",
+      "success_test": "tests/domain/test_servicenow_workflows.py::test_workflow_versions_activity_order_partial_failure_and_deletion",
+      "failure_test": "tests/domain/test_servicenow_workflows.py::test_workflow_errors_preserve_error_envelope_and_mcp_success[update_workflow_activity-args9]",
+      "limitations": "Source _unwrap_params excludes nulls; include_versions ignored. Attributes merge last except generated sys_id cannot be overridden. No tenant workflow engine; versions are fixture records. Reorder does not enforce workflow membership."
+    }
+  ]
+}
