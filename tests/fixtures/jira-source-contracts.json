@@ -1,0 +1,802 @@
+{
+  "source": {
+    "repository": "https://github.com/sooperset/mcp-atlassian",
+    "revision": "74bdaa8f1d28783cccfe99f7b4d75e6dc947cf76",
+    "provider": "atlassian_jira"
+  },
+  "tools": [
+    {
+      "source_name": "get_user_profile",
+      "mounted_name": "jira_get_user_profile",
+      "properties": [
+        "user_identifier"
+      ],
+      "required": [
+        "user_identifier"
+      ]
+    },
+    {
+      "source_name": "search_assignable_users",
+      "mounted_name": "jira_search_assignable_users",
+      "properties": [
+        "issue_key",
+        "limit",
+        "project_key",
+        "query"
+      ],
+      "required": [
+        "query"
+      ]
+    },
+    {
+      "source_name": "get_issue_watchers",
+      "mounted_name": "jira_get_issue_watchers",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "add_watcher",
+      "mounted_name": "jira_add_watcher",
+      "properties": [
+        "issue_key",
+        "user_identifier"
+      ],
+      "required": [
+        "issue_key",
+        "user_identifier"
+      ]
+    },
+    {
+      "source_name": "remove_watcher",
+      "mounted_name": "jira_remove_watcher",
+      "properties": [
+        "account_id",
+        "issue_key",
+        "username"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issue",
+      "mounted_name": "jira_get_issue",
+      "properties": [
+        "comment_limit",
+        "expand",
+        "fields",
+        "include",
+        "issue_key",
+        "properties",
+        "update_history",
+        "use_display_names"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "search",
+      "mounted_name": "jira_search",
+      "properties": [
+        "expand",
+        "fields",
+        "jql",
+        "limit",
+        "page_token",
+        "projects_filter",
+        "start_at",
+        "use_display_names"
+      ],
+      "required": [
+        "jql"
+      ]
+    },
+    {
+      "source_name": "search_fields",
+      "mounted_name": "jira_search_fields",
+      "properties": [
+        "keyword",
+        "limit",
+        "refresh"
+      ],
+      "required": []
+    },
+    {
+      "source_name": "get_field_options",
+      "mounted_name": "jira_get_field_options",
+      "properties": [
+        "contains",
+        "context_id",
+        "field_id",
+        "issue_type",
+        "project_key",
+        "return_limit",
+        "values_only"
+      ],
+      "required": [
+        "field_id"
+      ]
+    },
+    {
+      "source_name": "get_project_issues",
+      "mounted_name": "jira_get_project_issues",
+      "properties": [
+        "limit",
+        "project_key",
+        "start_at"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_transitions",
+      "mounted_name": "jira_get_transitions",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_worklog",
+      "mounted_name": "jira_get_worklog",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "download_attachments",
+      "mounted_name": "jira_download_attachments",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issue_images",
+      "mounted_name": "jira_get_issue_images",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_agile_boards",
+      "mounted_name": "jira_get_agile_boards",
+      "properties": [
+        "board_name",
+        "board_type",
+        "limit",
+        "project_key",
+        "start_at"
+      ],
+      "required": []
+    },
+    {
+      "source_name": "get_board_issues",
+      "mounted_name": "jira_get_board_issues",
+      "properties": [
+        "board_id",
+        "expand",
+        "fields",
+        "jql",
+        "limit",
+        "start_at"
+      ],
+      "required": [
+        "board_id",
+        "jql"
+      ]
+    },
+    {
+      "source_name": "get_sprints_from_board",
+      "mounted_name": "jira_get_sprints_from_board",
+      "properties": [
+        "board_id",
+        "limit",
+        "start_at",
+        "state"
+      ],
+      "required": [
+        "board_id"
+      ]
+    },
+    {
+      "source_name": "get_sprint_issues",
+      "mounted_name": "jira_get_sprint_issues",
+      "properties": [
+        "fields",
+        "limit",
+        "sprint_id",
+        "start_at"
+      ],
+      "required": [
+        "sprint_id"
+      ]
+    },
+    {
+      "source_name": "get_link_types",
+      "mounted_name": "jira_get_link_types",
+      "properties": [
+        "name_filter"
+      ],
+      "required": []
+    },
+    {
+      "source_name": "create_issue",
+      "mounted_name": "jira_create_issue",
+      "properties": [
+        "additional_fields",
+        "assignee",
+        "components",
+        "description",
+        "issue_type",
+        "project_key",
+        "summary"
+      ],
+      "required": [
+        "issue_type",
+        "project_key",
+        "summary"
+      ]
+    },
+    {
+      "source_name": "batch_create_issues",
+      "mounted_name": "jira_batch_create_issues",
+      "properties": [
+        "issues",
+        "validate_only"
+      ],
+      "required": [
+        "issues"
+      ]
+    },
+    {
+      "source_name": "batch_get_changelogs",
+      "mounted_name": "jira_batch_get_changelogs",
+      "properties": [
+        "fields",
+        "issue_ids_or_keys",
+        "limit"
+      ],
+      "required": [
+        "issue_ids_or_keys"
+      ]
+    },
+    {
+      "source_name": "update_issue",
+      "mounted_name": "jira_update_issue",
+      "properties": [
+        "additional_fields",
+        "attachments",
+        "comment",
+        "comment_visibility",
+        "components",
+        "fields",
+        "issue_key",
+        "return_fields",
+        "transition",
+        "worklog",
+        "worklog_started"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "assign_issue",
+      "mounted_name": "jira_assign_issue",
+      "properties": [
+        "assignee",
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "delete_issue",
+      "mounted_name": "jira_delete_issue",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "move_issue",
+      "mounted_name": "jira_move_issue",
+      "properties": [
+        "issue_key",
+        "target_project_key"
+      ],
+      "required": [
+        "issue_key",
+        "target_project_key"
+      ]
+    },
+    {
+      "source_name": "add_comment",
+      "mounted_name": "jira_add_comment",
+      "properties": [
+        "body",
+        "issue_key",
+        "public",
+        "visibility"
+      ],
+      "required": [
+        "body",
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "edit_comment",
+      "mounted_name": "jira_edit_comment",
+      "properties": [
+        "body",
+        "comment_id",
+        "issue_key",
+        "visibility"
+      ],
+      "required": [
+        "body",
+        "comment_id",
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "add_worklog",
+      "mounted_name": "jira_add_worklog",
+      "properties": [
+        "comment",
+        "issue_key",
+        "original_estimate",
+        "remaining_estimate",
+        "started",
+        "time_spent"
+      ],
+      "required": [
+        "issue_key",
+        "time_spent"
+      ]
+    },
+    {
+      "source_name": "link_to_epic",
+      "mounted_name": "jira_link_to_epic",
+      "properties": [
+        "epic_key",
+        "issue_key"
+      ],
+      "required": [
+        "epic_key",
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "create_issue_link",
+      "mounted_name": "jira_create_issue_link",
+      "properties": [
+        "comment",
+        "comment_visibility",
+        "inward_issue_key",
+        "link_type",
+        "outward_issue_key"
+      ],
+      "required": [
+        "inward_issue_key",
+        "link_type",
+        "outward_issue_key"
+      ]
+    },
+    {
+      "source_name": "create_remote_issue_link",
+      "mounted_name": "jira_create_remote_issue_link",
+      "properties": [
+        "icon_url",
+        "issue_key",
+        "relationship",
+        "summary",
+        "title",
+        "url"
+      ],
+      "required": [
+        "issue_key",
+        "title",
+        "url"
+      ]
+    },
+    {
+      "source_name": "remove_issue_link",
+      "mounted_name": "jira_remove_issue_link",
+      "properties": [
+        "link_id"
+      ],
+      "required": [
+        "link_id"
+      ]
+    },
+    {
+      "source_name": "transition_issue",
+      "mounted_name": "jira_transition_issue",
+      "properties": [
+        "comment",
+        "fields",
+        "issue_key",
+        "transition_id"
+      ],
+      "required": [
+        "issue_key",
+        "transition_id"
+      ]
+    },
+    {
+      "source_name": "create_sprint",
+      "mounted_name": "jira_create_sprint",
+      "properties": [
+        "board_id",
+        "end_date",
+        "goal",
+        "name",
+        "start_date"
+      ],
+      "required": [
+        "board_id",
+        "end_date",
+        "name",
+        "start_date"
+      ]
+    },
+    {
+      "source_name": "update_sprint",
+      "mounted_name": "jira_update_sprint",
+      "properties": [
+        "end_date",
+        "goal",
+        "name",
+        "sprint_id",
+        "start_date",
+        "state"
+      ],
+      "required": [
+        "sprint_id"
+      ]
+    },
+    {
+      "source_name": "add_issues_to_sprint",
+      "mounted_name": "jira_add_issues_to_sprint",
+      "properties": [
+        "issue_keys",
+        "sprint_id"
+      ],
+      "required": [
+        "issue_keys",
+        "sprint_id"
+      ]
+    },
+    {
+      "source_name": "move_issues_to_backlog",
+      "mounted_name": "jira_move_issues_to_backlog",
+      "properties": [
+        "issue_keys"
+      ],
+      "required": [
+        "issue_keys"
+      ]
+    },
+    {
+      "source_name": "get_project_issue_types",
+      "mounted_name": "jira_get_project_issue_types",
+      "properties": [
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_create_fields",
+      "mounted_name": "jira_get_create_fields",
+      "properties": [
+        "issue_type_id",
+        "project_key"
+      ],
+      "required": [
+        "issue_type_id",
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_project_versions",
+      "mounted_name": "jira_get_project_versions",
+      "properties": [
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_project_components",
+      "mounted_name": "jira_get_project_components",
+      "properties": [
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_all_projects",
+      "mounted_name": "jira_get_all_projects",
+      "properties": [
+        "include_archived"
+      ],
+      "required": []
+    },
+    {
+      "source_name": "search_projects",
+      "mounted_name": "jira_search_projects",
+      "properties": [
+        "current_project_ids",
+        "max_results",
+        "query"
+      ],
+      "required": [
+        "query"
+      ]
+    },
+    {
+      "source_name": "get_project_fields",
+      "mounted_name": "jira_get_project_fields",
+      "properties": [
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_service_desk_for_project",
+      "mounted_name": "jira_get_service_desk_for_project",
+      "properties": [
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_service_desk_queues",
+      "mounted_name": "jira_get_service_desk_queues",
+      "properties": [
+        "limit",
+        "service_desk_id",
+        "start_at"
+      ],
+      "required": [
+        "service_desk_id"
+      ]
+    },
+    {
+      "source_name": "get_queue_issues",
+      "mounted_name": "jira_get_queue_issues",
+      "properties": [
+        "limit",
+        "queue_id",
+        "service_desk_id",
+        "start_at"
+      ],
+      "required": [
+        "queue_id",
+        "service_desk_id"
+      ]
+    },
+    {
+      "source_name": "get_request_types",
+      "mounted_name": "jira_get_request_types",
+      "properties": [
+        "limit",
+        "service_desk_id",
+        "start_at"
+      ],
+      "required": [
+        "service_desk_id"
+      ]
+    },
+    {
+      "source_name": "get_request_type_fields",
+      "mounted_name": "jira_get_request_type_fields",
+      "properties": [
+        "request_type_id",
+        "service_desk_id"
+      ],
+      "required": [
+        "request_type_id",
+        "service_desk_id"
+      ]
+    },
+    {
+      "source_name": "create_customer_request",
+      "mounted_name": "jira_create_customer_request",
+      "properties": [
+        "attachments",
+        "raise_on_behalf_of",
+        "request_field_values",
+        "request_participants",
+        "request_type_id",
+        "service_desk_id",
+        "strict_on_behalf"
+      ],
+      "required": [
+        "request_field_values",
+        "request_type_id",
+        "service_desk_id"
+      ]
+    },
+    {
+      "source_name": "create_version",
+      "mounted_name": "jira_create_version",
+      "properties": [
+        "description",
+        "name",
+        "project_key",
+        "release_date",
+        "start_date"
+      ],
+      "required": [
+        "name",
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "batch_create_versions",
+      "mounted_name": "jira_batch_create_versions",
+      "properties": [
+        "project_key",
+        "versions"
+      ],
+      "required": [
+        "project_key",
+        "versions"
+      ]
+    },
+    {
+      "source_name": "update_version",
+      "mounted_name": "jira_update_version",
+      "properties": [
+        "archived",
+        "description",
+        "name",
+        "release_date",
+        "released",
+        "start_date",
+        "version_id"
+      ],
+      "required": [
+        "version_id"
+      ]
+    },
+    {
+      "source_name": "get_issue_proforma_forms",
+      "mounted_name": "jira_get_issue_proforma_forms",
+      "properties": [
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_proforma_form_details",
+      "mounted_name": "jira_get_proforma_form_details",
+      "properties": [
+        "form_id",
+        "issue_key"
+      ],
+      "required": [
+        "form_id",
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "update_proforma_form_answers",
+      "mounted_name": "jira_update_proforma_form_answers",
+      "properties": [
+        "answers",
+        "form_id",
+        "issue_key"
+      ],
+      "required": [
+        "answers",
+        "form_id",
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issue_dates",
+      "mounted_name": "jira_get_issue_dates",
+      "properties": [
+        "include_status_changes",
+        "include_status_summary",
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issue_sla",
+      "mounted_name": "jira_get_issue_sla",
+      "properties": [
+        "include_raw_dates",
+        "issue_key",
+        "metrics",
+        "working_hours_only"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issue_development_info",
+      "mounted_name": "jira_get_issue_development_info",
+      "properties": [
+        "application_type",
+        "data_type",
+        "issue_key"
+      ],
+      "required": [
+        "issue_key"
+      ]
+    },
+    {
+      "source_name": "get_issues_development_info",
+      "mounted_name": "jira_get_issues_development_info",
+      "properties": [
+        "application_type",
+        "data_type",
+        "issue_keys"
+      ],
+      "required": [
+        "issue_keys"
+      ]
+    },
+    {
+      "source_name": "get_project_epic_hierarchy",
+      "mounted_name": "jira_get_project_epic_hierarchy",
+      "properties": [
+        "max_epics",
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    },
+    {
+      "source_name": "get_cross_project_dependencies",
+      "mounted_name": "jira_get_cross_project_dependencies",
+      "properties": [
+        "max_issues",
+        "project_key"
+      ],
+      "required": [
+        "project_key"
+      ]
+    }
+  ]
+}

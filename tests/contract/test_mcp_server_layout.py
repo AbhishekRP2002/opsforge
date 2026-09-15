@@ -38,6 +38,16 @@ PROVIDER_MODULES = {
         "projects",
     ),
     "darwinbox": ("attendance", "core", "masters", "recruitment", "timeoff"),
+    "jira": (
+        "activity",
+        "agile",
+        "core",
+        "forms",
+        "insights",
+        "metadata",
+        "service_desk",
+        "workflow",
+    ),
 }
 
 
