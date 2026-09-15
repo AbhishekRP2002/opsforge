@@ -277,6 +277,15 @@ class Scenario(FixtureModel):
     jira_boards: list[dict] = Field(default_factory=list)
     jira_sprints: list[dict] = Field(default_factory=list)
     jira_sprint_issues: list[dict] = Field(default_factory=list)
+    jira_versions: list[dict] = Field(default_factory=list)
+    jira_service_desks: list[dict] = Field(default_factory=list)
+    jira_queues: list[dict] = Field(default_factory=list)
+    jira_request_types: list[dict] = Field(default_factory=list)
+    jira_requests: list[dict] = Field(default_factory=list)
+    jira_forms: list[dict] = Field(default_factory=list)
+    jira_attachments: list[dict] = Field(default_factory=list)
+    jira_development_records: list[dict] = Field(default_factory=list)
+    jira_sla: dict = Field(default_factory=dict)
     jira_current_user: str | None = None
     jira_projects_filter: list[str] = Field(default_factory=list)
     jira_epoch: str = "2026-01-01T00:00:00+00:00"

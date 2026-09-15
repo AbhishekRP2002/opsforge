@@ -58,6 +58,11 @@ class Database:
                     .joinpath("migrations", "007_jira.sql")
                     .read_text()
                 )
+                db.connection.executescript(
+                    files("itops_env.server.storage")
+                    .joinpath("migrations", "008_jira_extended.sql")
+                    .read_text()
+                )
                 from ..services.jira_store import seed as seed_jira
 
                 seed_jira(db, scenario)
