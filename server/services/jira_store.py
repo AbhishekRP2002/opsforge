@@ -228,6 +228,7 @@ def validate_fields(data, metadata):
         "updated",
         "resolution",
         "resolutiondate",
+        "duedate",
     }
     for field in data:
         if field not in allowed and field not in metadata["field_names"]:
@@ -247,6 +248,13 @@ def validate_fields(data, metadata):
         from .jira_relations import timestamp
 
         timestamp(data["resolutiondate"], "resolutiondate")
+    if "duedate" in data:
+        from datetime import date
+
+        try:
+            date.fromisoformat(text(data["duedate"], "duedate"))
+        except ValueError as error:
+            raise BusinessError("duedate must use YYYY-MM-DD") from error
     for component in array(data.get("components", []), "components"):
         named(metadata["components"], component, "component")
     for key in data:
@@ -426,6 +434,15 @@ def validate_fixtures(world):
     from .jira_agile import validate_fixtures as validate_agile
 
     validate_agile(world)
+    from .jira_forms import validate_fixtures as validate_forms
+    from .jira_insights import validate_fixtures as validate_insights
+    from .jira_metadata import validate_fixtures as validate_metadata
+    from .jira_service_desk import validate_fixtures as validate_service_desk
+
+    validate_metadata(world)
+    validate_service_desk(world)
+    validate_forms(world)
+    validate_insights(world)
 
 
 def seed(db, world):
@@ -464,3 +481,12 @@ def seed(db, world):
     from .jira_agile import seed as seed_agile
 
     seed_agile(db, world)
+    from .jira_forms import seed as seed_forms
+    from .jira_insights import seed as seed_insights
+    from .jira_metadata import seed as seed_metadata
+    from .jira_service_desk import seed as seed_service_desk
+
+    seed_metadata(db, world)
+    seed_service_desk(db, world)
+    seed_forms(db, world)
+    seed_insights(db, world)

@@ -3,13 +3,13 @@
 from collections.abc import Callable, Mapping
 from copy import deepcopy
 from functools import lru_cache
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, cast
 
 from fastmcp import FastMCP
 from fastmcp.tools import Tool
 from jsonschema import Draft202012Validator, validators
 
-from . import benchmark, darwinbox, erpnext, okta, servicenow
+from . import benchmark, darwinbox, erpnext, jira, okta, servicenow
 
 if TYPE_CHECKING:
     from ..storage.database import Database
@@ -22,12 +22,14 @@ REGISTRARS = {
     "benchmark": benchmark.register_tools,
     "erpnext": erpnext.register_tools,
     "darwinbox": darwinbox.register_tools,
+    "jira": jira.register_tools,
 }
 HANDLER_RESOLVERS: dict[str, Callable[[], Mapping[str, Handler]]] = {
     "darwinbox": lambda: _darwinbox_handlers(),
     "erpnext": lambda: _erpnext_handlers(),
     "okta": lambda: _okta_handlers(),
     "servicenow": lambda: _servicenow_handlers(),
+    "jira": lambda: _jira_handlers(),
 }
 CONTROL_TOOL_NAMES = {"benchmark": frozenset({"workflow_wait", "workflow_submit"})}
 StrictValidator = validators.extend(
@@ -148,6 +150,22 @@ def _servicenow_handlers() -> Mapping[str, Handler]:
             "get_user": service.get_user,
             "add_group_members": service.add_group_members,
         }
+    )
+
+
+def _jira_handlers() -> Mapping[str, Handler]:
+    from ..services.jira_agile import HANDLERS as AGILE
+    from ..services.jira_core import HANDLERS as CORE
+    from ..services.jira_forms import HANDLERS as FORMS
+    from ..services.jira_insights import HANDLERS as INSIGHTS
+    from ..services.jira_metadata import HANDLERS as METADATA
+    from ..services.jira_relations import HANDLERS as ACTIVITY
+    from ..services.jira_service_desk import HANDLERS as SERVICE_DESK
+    from ..services.jira_workflow import HANDLERS as WORKFLOW
+
+    return cast(
+        Mapping[str, Handler],
+        CORE | ACTIVITY | METADATA | WORKFLOW | AGILE | SERVICE_DESK | FORMS | INSIGHTS,
     )
 
 

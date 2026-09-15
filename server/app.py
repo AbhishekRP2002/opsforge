@@ -1,4 +1,4 @@
-"""One trusted OpenEnv owner and three agent-only native MCP endpoints."""
+"""One trusted OpenEnv owner with registry-defined agent-only MCP endpoints."""
 
 import asyncio
 import os
@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from itops_env.models import ItopsAction, ItopsObservation
 from openenv.core.env_server.http_server import HTTPEnvServer
 
+from .core.scenarios import Scenario
 from .interfaces.control import ControllerAuth, EpisodeBinding, register_control
 from .interfaces.mcp_bridge import DuplicateRequestGuard
 from .itops_environment import ItopsEnvironment
@@ -39,7 +40,10 @@ class OwnedHTTPEnvServer(HTTPEnvServer):
             raise
 
 
-def create_opsforge_app(controller_token: str | None = None) -> FastAPI:
+def create_opsforge_app(
+    controller_token: str | None = None,
+    scenario: Scenario | str = "identity-group-v1",
+) -> FastAPI:
     validate_registry()
     token = (
         controller_token
@@ -48,7 +52,7 @@ def create_opsforge_app(controller_token: str | None = None) -> FastAPI:
     )
     binding = EpisodeBinding()
     server = OwnedHTTPEnvServer(
-        lambda: ItopsEnvironment(binding=binding),
+        lambda: ItopsEnvironment(scenario=scenario, binding=binding),
         ItopsAction,
         ItopsObservation,
         binding=binding,

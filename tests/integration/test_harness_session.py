@@ -3,6 +3,7 @@
 import importlib
 import importlib.util
 import json
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import pytest
@@ -393,6 +394,16 @@ def test_resource_session_success_and_canonical_verification(live_server):
             "darwinbox__get_job_listings",
             "darwinbox__get_job_detail",
             "darwinbox__get_bulk_candidates",
+            *{
+                "jira__" + item["mounted_name"]
+                for item in json.loads(
+                    (
+                        Path(__file__).parents[1]
+                        / "fixtures"
+                        / "jira-source-contracts.json"
+                    ).read_text()
+                )["tools"]
+            },
             "benchmark__workflow_wait",
             "benchmark__workflow_submit",
         }

@@ -93,6 +93,7 @@ def test_callable_declarations_share_registry_checks(monkeypatch):
         ("darwinbox", 23),
         ("okta", 112),
         ("benchmark", 2),
+        ("jira", 63),
     ],
 )
 def test_registered_contracts_have_typed_async_callables(provider, count):
@@ -106,7 +107,7 @@ def test_registered_contracts_have_typed_async_callables(provider, count):
             parameter.annotation is not inspect.Parameter.empty
             for parameter in signature.parameters.values()
         ), name
-        if provider in {"servicenow", "erpnext", "darwinbox"}:
+        if provider in {"servicenow", "erpnext", "darwinbox", "jira"}:
             assert declaration.description
 
 
